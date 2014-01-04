@@ -66,6 +66,8 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , ((modMask .|. controlMask .|. shiftMask, xK_t), namedScratchpadAction myScratchpads "htop")
         , ((modMask .|. controlMask .|. shiftMask, xK_s), namedScratchpadAction myScratchpads "stardict")
         , ((modMask .|. controlMask .|. shiftMask, xK_n), namedScratchpadAction myScratchpads "notes")
+        -- back in line, you dirty ape!
+        , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
 
    ]
     ++ -- switch between workspaces
@@ -76,6 +78,20 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [((m .|. modMask, k), screenWorkspace sc >>= flip whenJust (windows . f))
         | (k, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
+
+-- Default mouse bindings. They're actually useful!
+
+myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
+    -- mod-button1 %! Set the window to floating mode and move by dragging
+    [ ((modMask, button1), \w -> focus w >> mouseMoveWindow w
+                                          >> windows W.shiftMaster)
+    -- mod-button2 %! Raise the window to the top of the stack
+--    , ((modMask, button2), windows . (W.shiftMaster .) . W.focusWindow)
+    -- mod-button3 %! Set the window to floating mode and resize by dragging
+     , ((modMask, button2), windows . W.sink)
+     , ((modMask, button3), windows . W.sink)] 
+
+
 
 -- shell prompt theme
 mySP = defaultXPConfig

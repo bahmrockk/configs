@@ -33,24 +33,26 @@ myUrgencyHookConfig = urgencyConfig { remindWhen=Every 60}
 
 myManageHook :: ManageHook
 myManageHook = (composeAll . concat $
-    [ [resource     =? r            --> doIgnore              |   r   <- myIgnores] 
-    , [className    =? c            --> doShift  "Main"     |   c   <- myDev    ]
-    , [className    =? c            --> doShift  "Web"      |   c   <- myWebs   ]
-    , [className    =? c            --> doShift  "Consoles" |   c   <- myConsoles]
-    , [className    =? c            --> doShift  "Media"    |   c   <- myMusic  ]
-    , [className    =? c            --> doShift  "Media"    |   c   <- myMedia  ]
-    , [className    =? c            --> doShift	 "Chat"     |   c   <- myChat   ]
-    , [className    =? c            --> doShift  "Mail"     |   c   <- myMail   ]
-    , [className    =? c            --> doShift  "7"          |   c   <- myGimp   ] 
-    , [className    =? c            --> doCenterFloat         |   c   <- myFloats ]
-    , [name         =? n            --> doCenterFloat         |   n   <- myFloatNamed]
-    , [isFullscreen                 --> myDoFullFloat                           ]  
-    ] ) <+> namedScratchpadManageHook myScratchpads 
+    [[role         =? r --> doCenterFloat      |  r <- myFloatRoles    ]
+    ,[resource     =? r --> doIgnore           |  r <- myIgnores       ]
+    ,[className    =? c --> doShift "Main"     |  c <- myDev           ]
+    ,[className    =? c --> doShift "Web"      |  c <- myWebs          ]
+    ,[className    =? c --> doShift "Consoles" |  c <- myConsoles      ]
+    ,[className    =? c --> doShift "Media"    |  c <- myMusic         ]
+    ,[className    =? c --> doShift "Media"    |  c <- myMedia         ]
+    ,[className    =? c --> doShift "Chat"     |  c <- myChat          ]
+    ,[className    =? c --> doShift "Mail"     |  c <- myMail          ]
+    ,[className    =? c --> doShift "7"        |  c <- myGimp          ]
+    ,[className    =? c --> doCenterFloat      |  c <- myFloats        ]
+    ,[name         =? n --> doCenterFloat      |  n <- myFloatNamed    ]
+    ,[isFullscreen --> myDoFullFloat                                   ]  
+    ]) <+> namedScratchpadManageHook myScratchpads 
     where
         role      = stringProperty "WM_WINDOW_ROLE"
         name      = stringProperty "WM_NAME"
  
         -- classnames
+        myFloatRoles = ["gimp-toolbox"]
         myFloats  = ["Xmessage", "Downloads", "Popup"]
         myWebs      = [] --TODO: Find a way to spawn on other WS than the hooked one
         myMedia     = ["Plugin-container", "Google-chrome","Chromium", "Chromium-browser"]
@@ -58,7 +60,7 @@ myManageHook = (composeAll . concat $
         myChat	    = ["Pidgin","Buddy List", "Skype"]
         myGimp	    = ["Gimp"]
         myDev	    = ["Eclipse"]
-        myConsoles  = ["Gvim", "xterm"]
+        myConsoles  = ["xterm"]
         myMail      = ["Mail", "Thunderbird"]
         -- resources
         myIgnores = []

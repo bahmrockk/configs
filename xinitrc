@@ -18,7 +18,7 @@ pidgin &
 firefox &
 chromium &
 thunderbird &
-feh --bg-fill ~/.xmonad/bg/curve.jpg &
+feh --bg-fill ~/.xmonad/res/bg/curve.jpg &
 export BROWSER="firefox"
 
 exec xmonad

@@ -35,6 +35,7 @@ main = do
                              modMask               = mod4Mask
                             -- key bindings
                             ,keys                  = myKeys
+                            ,mouseBindings         = myMouseBindings
                             -- ws setup
 --                            ,workspaces            = withScreens nScreens myWorkspaces
                             ,workspaces            = myWorkspaces
