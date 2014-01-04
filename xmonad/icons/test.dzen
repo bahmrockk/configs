@@ -1,0 +1,10 @@
+#/bin/sh
+
+function generateOutput {
+echo "testoutput";
+for f in $(find . -type "f"|grep xbm)
+do
+echo "$f: ^i($f)";
+done
+}
+generateOutput|dzen2 -x 700 -y 300 -l 22 -ta c -sa l -w 900 -p 5 -xs 1

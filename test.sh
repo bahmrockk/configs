@@ -1,0 +1,2 @@
+echo $DIRNAME
+echo $PWD
