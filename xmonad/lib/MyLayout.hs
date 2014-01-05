@@ -17,12 +17,13 @@ import XMonad.Layout
 import Data.Ratio ((%))
 
 
-myLayout = onWorkspace "Chat" imLayout $
-           defaultLayout
+myLayout =   onWorkspace "Chat" imLayout            
+           $ onWorkspace "Media" mediaLayout 
+           $ defaultLayout
 
 
-defaultLayout = smartBorders
-              $ avoidStruts 
+defaultLayout = --smartBorders
+              avoidStruts 
               $ tiled ||| Circle ||| simpleFloat ||| Full ||| simpleTabbed ||| Grid
                 where
                     tiled = Tall nmaster delta ratio
@@ -30,5 +31,8 @@ defaultLayout = smartBorders
                     ratio = 3/5
                     delta = 3/100 
 
+mediaLayout = noBorders 
+            $ avoidStruts
+            $ Full ||| simpleFloat ||| Grid ||| Circle
 imLayout = avoidStruts $ withIM (1/4) (Role "buddy_list") (Grid ||| Circle ||| simpleTabbed)
 

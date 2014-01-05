@@ -1,3 +1,4 @@
+#!/bin/sh
 fgCol=green4
 bgCol=black
 titleCol=green4

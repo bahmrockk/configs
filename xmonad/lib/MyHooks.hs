@@ -18,6 +18,8 @@ import XMonad.Util.NamedWindows
 
 import MyScratchpads
 
+import XMonad.Actions.WorkspaceNames 
+
 xmonadDir = "/home/bahmrockk/.xmonad/icons/"
 
 data LibNotifyUrgencyHook = LibNotifyUrgencyHook deriving (Read, Show)
@@ -30,10 +32,12 @@ instance UrgencyHook LibNotifyUrgencyHook where
 
 myUrgencyHookConfig = urgencyConfig { remindWhen=Every 60}
 
+-- WM_WINDOW_ROLE(STRING) = "conversation" <-- set urgent on spawn
 
 myManageHook :: ManageHook
 myManageHook = (composeAll . concat $
     [[role         =? r --> doCenterFloat      |  r <- myFloatRoles    ]
+--     [role         =? r --> :
     ,[resource     =? r --> doIgnore           |  r <- myIgnores       ]
     ,[className    =? c --> doShift "Main"     |  c <- myDev           ]
     ,[className    =? c --> doShift "Web"      |  c <- myWebs          ]
@@ -73,7 +77,7 @@ myManageHook = (composeAll . concat $
         myDoFullFloat = doF W.focusDown <+> doFullFloat
 
 
- 
+
 myLogHook :: Handle -> X ()
 --myLogHook h = manageDocks <+> dynamicMasterHook <+> dynamicLogWithPP $ defaultPP 
 myLogHook h = dynamicLogWithPP $ defaultPP
