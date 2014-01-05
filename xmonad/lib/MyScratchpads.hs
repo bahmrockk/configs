@@ -17,5 +17,5 @@ myScratchpads = [
             where
                 h = 0.3       
                 w = 0.3      
-                t = 1-h-0.03 
+                t = (1-h)/2 
                 l = (1-w)/2
