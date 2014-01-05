@@ -18,6 +18,8 @@ case "$choice" in
         ln -s $SELFPATH/xmonad ~/.xmonad
         rm -rf ~/.xinitrc
         ln -s $SELFPATH/xinitrc ~/.xinitrc
+        $SELFPATH/dir_structure.sh
+        $SELFPATH/packages.sh 
         printf "\ndone. You're now 20%% cooler. Good luck finding errors!\n"
         ;;
     *) printf "\nthought so. Pussy. $SELFPATH \n" echo $SELFPATH;;

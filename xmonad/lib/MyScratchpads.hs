@@ -11,7 +11,7 @@ myScratchpads = [
     ,NS "notes" spawnTerm  findTerm  manageTerm       -- and a second
     ] 
     where
-        spawnTerm  = "gvim --role notes -name notes ~/notes"       -- launch my terminal
+        spawnTerm  = "~/.xmonad/scripts/gvim-scratchpad"       -- launch my terminal
         findTerm   = stringProperty "WM_WINDOW_ROLE" =? "notes"
         manageTerm = customFloating $ W.RationalRect l t w h -- and I'd like it fixed using the geometry below
             where

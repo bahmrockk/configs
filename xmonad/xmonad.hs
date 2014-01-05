@@ -33,6 +33,7 @@ main = do
     xmonad $ withUrgencyHookC LibNotifyUrgencyHook myUrgencyHookConfig
            $ defaultConfig {
                              modMask               = mod4Mask
+                            ,terminal              = "urxvtc"
                             -- key bindings
                             ,keys                  = myKeys
                             ,mouseBindings         = myMouseBindings

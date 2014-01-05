@@ -5,6 +5,8 @@
 bindkey "\e[3~" delete-char
 # einfg/insrt
 bindkey "\e[2~" insert-mode 
+# Ctrl+r stays history search!
+bindkey '^R' history-incremental-search-backward
 #vim mode pleaseeee
 bindkey -v
 
