@@ -64,7 +64,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , ((modMask                 ,xK_y        ), toggleWS)
         -- Scratchpads
         , ((modMask .|. controlMask .|. shiftMask, xK_t), namedScratchpadAction myScratchpads "htop")
-        , ((modMask .|. controlMask .|. shiftMask, xK_s), namedScratchpadAction myScratchpads "stardict")
+        , ((modMask .|. controlMask .|. shiftMask, xK_s), namedScratchpadAction myScratchpads "goldendict")
         , ((modMask .|. controlMask .|. shiftMask, xK_n), namedScratchpadAction myScratchpads "notes")
         -- back in line, you dirty ape!
         , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
