@@ -19,7 +19,7 @@ sudo pacman -S firefox chromium thunderbird pidgin pidgin-otr playonlinux steam 
 
 #packages from the AUR world:
 #DISCLAIMER: Those packages are not official. I checked them and found nothing but that's worth just as much.
-yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git grive
+yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git grive cowfortune
 
 #packages to take a closer look at:
 #sudo pacman -S 
