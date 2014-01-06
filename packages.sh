@@ -13,7 +13,7 @@ fi
 ### CHECKOUT IF USEFUL: trayer
 
 # Packages which are needed for what is configured here
-sudo pacman -S dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict # -- needed
+sudo pacman -S dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc # -- needed
 # Packages which I like or want in addition to the core
 sudo pacman -S firefox chromium thunderbird pidgin pidgin-otr playonlinux steam ntp yaourt flashplugin
 
