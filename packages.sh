@@ -20,7 +20,7 @@ sudo pacman -S firefox chromium thunderbird pidgin pidgin-otr playonlinux steam 
 #get yauort and dependencies from repository
 
 #packages from the AUR world:
-#yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git
+#yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git cowfortune
 
 #packages to take a closer look at:
 #sudo pacman -S 
