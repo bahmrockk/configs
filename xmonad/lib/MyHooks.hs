@@ -49,7 +49,7 @@ myManageHook = (composeAll . concat $
     ,[className    =? c --> doShift "7"        |  c <- myGimp          ]
     ,[className    =? c --> doCenterFloat      |  c <- myFloats        ]
     ,[name         =? n --> doCenterFloat      |  n <- myFloatNamed    ]
-    ,[isFullscreen --> myDoFullFloat                                   ]  
+ --   ,[isFullscreen --> myDoFullFloat                                   ]  
     ]) <+> namedScratchpadManageHook myScratchpads 
     where
         role      = stringProperty "WM_WINDOW_ROLE"
