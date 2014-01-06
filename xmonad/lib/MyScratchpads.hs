@@ -10,7 +10,7 @@ myScratchpads = [
     ,NS "notes" spawnGvim  findGvim placeWin 
     ] 
     where
-        spawnGvim  = "~/.xmonad/scripts/gvim-scratchpad"       -- launch my terminal
+        spawnGvim  = "~/.xmonad/scripts/gvim_scratchpad.sh"       -- launch my terminal
         findGvim   = stringProperty "WM_WINDOW_ROLE" =? "notes"
         placeWin   = customFloating $ W.RationalRect l t w h -- and I'd like it fixed using the geometry below
             where

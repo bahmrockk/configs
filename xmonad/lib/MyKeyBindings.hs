@@ -18,7 +18,7 @@ import System.Exit
 import MyScratchpads
 --myKeys :: M.Map -> M.Map
 
-deleteUrgentBlink = do
+checkUrgentBlink = do
         urgents <- readUrgents
         if null urgents
             then do spawn $ "touch /tmp/noblink"
@@ -34,7 +34,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         -- shell/window prompts
         , ((modMask                 ,xK_Return   ), spawnHere $ XMonad.terminal conf)
         , ((modMask .|. shiftMask   ,xK_Return   ), spawnHere $ "firefox")
-        , ((modMask .|. shiftMask   ,xK_z        ), spawn $ "/home/bahmrockk/.xmonad/scripts/showKeys.dzen.sh")
+        , ((modMask .|. shiftMask   ,xK_z        ), spawn $ "/home/bahmrockk/.xmonad/scripts/show_keys_dzen.sh")
         , ((modMask                 ,xK_a        ), spawn "xclock")
         , ((modMask                 ,xK_space    ), runOrRaisePrompt mySP)
         , ((modMask .|. shiftMask   ,xK_space    ), shellPrompt mySP)
@@ -65,9 +65,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         -- Swap the focused window with next/prev window
         , ((modMask .|. shiftMask   ,xK_j        ), windows W.swapDown)
         , ((modMask .|. shiftMask   ,xK_k        ), windows W.swapUp)
-        , ((modMask                 ,xK_u        ), broadcastMessage ToggleMonitor >> refresh)
-        , ((modMask                 ,xK_u        ), focusUrgent) 
-        , ((modMask                 ,xK_u        ), deleteUrgentBlink) 
+        , ((modMask                 ,xK_u        ), sequence_ [focusUrgent, checkUrgentBlink]) 
         , ((modMask                 ,xK_BackSpace), toggleWS) 
         , ((modMask                 ,xK_y        ), toggleWS)
         -- Scratchpads
@@ -76,11 +74,11 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , ((modMask .|. controlMask .|. shiftMask, xK_n), namedScratchpadAction myScratchpads "notes")
         -- back in line, you dirty ape!
         , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
-        , ((modMask, xK_p),              sequence_ [toggleWS, deleteUrgentBlink])
+        , ((modMask, xK_p),              sequence_ [toggleWS, checkUrgentBlink])
 
    ]
     ++ -- switch between workspaces
-    [((m .|. modMask, k), sequence_ [windows $ f i, deleteUrgentBlink]) 
+    [((m .|. modMask, k), sequence_ [windows $ f i, checkUrgentBlink]) 
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
     ++ -- switch between physical screens
@@ -88,7 +86,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (k, sc) <- zip [xK_F1, xK_F2, xK_F3] [0..]
         , (f, m) <- [(W.view, 0), (W.shift, shiftMask)]]
 --   ++ -- when switching screens or shifting windows, check if urgent is set
---    [((m .|. modMask, k), deleteUrgentBlink)
+--    [((m .|. modMask, k), checkUrgentBlink)
 --        | k <- [xK_1 .. xK_9]
 --        , m <- [0, shiftMask]]
 -- Default mouse bindings. They're actually useful!

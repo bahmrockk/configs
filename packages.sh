@@ -10,17 +10,19 @@ Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf'
     yaourt -Syua # SHOULD be useless, but better safe than ...
 fi
 
+### CHECKOUT IF USEFUL: trayer
 
 # Packages which are needed for what is configured here
 sudo pacman -S dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict # -- needed
 # Packages which I like or want in addition to the core
 sudo pacman -S firefox chromium thunderbird pidgin pidgin-otr playonlinux steam ntp yaourt flashplugin
 
-#the new repository has to be loaded potentially
-#get yauort and dependencies from repository
-
 #packages from the AUR world:
-#yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git
+#DISCLAIMER: Those packages are not official. I checked them and found nothing but that's worth just as much.
+yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git grive
 
 #packages to take a closer look at:
 #sudo pacman -S 
+
+echo
+echo "Do not forget to install: http://code.google.com/p/skype4pidgin/ ."

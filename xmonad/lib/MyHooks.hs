@@ -80,7 +80,8 @@ myManageHook = (composeAll . concat $
 
 myLogHook :: Handle -> X ()
 --myLogHook h = manageDocks <+> dynamicMasterHook <+> dynamicLogWithPP $ defaultPP 
-myLogHook h = dynamicLogWithPP $ defaultPP
+myLogHook h = dynamicLogWithPP 
+                        $ defaultPP
    {
           ppCurrent           = dzenColor "#4671D5" "#1B1D1E" . pad . wrap "[" "]"
         , ppVisible           = dzenColor "#1240AB" "#1B1D1E" . pad . wrap "[" "]"

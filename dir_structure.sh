@@ -1,6 +1,8 @@
 #!/bin/sh
 mkdir -p ~/Projects
-mkdir -p ~/Media
+mkdir -p ~/Media/Music
+mkdir    ~/Media/Pictures
+mkdir    ~/Media/Cloud
 mkdir -p ~/Downloads
 mkdir -p ~/.config
 mkdir -p ~/Documents

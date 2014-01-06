@@ -10,6 +10,8 @@ bindkey '^R' history-incremental-search-backward
 #vim mode pleaseeee
 bindkey -v
 
+#complete the "/" in dirs
+
 case "$TERM" in
         linux|screen)
                 bindkey "^[[1~" beginning-of-line       # Pos1
@@ -28,8 +30,8 @@ case "$TERM" in
 esac
 
 setopt INC_APPEND_HISTORY
-
 zstyle ':completion:*' completer _complete _ignored _correct _approximate
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 zstyle :compinstall filename '/home/bahmrockk/.zshrc'
 
 autoload -U compinit zcalc promptinit
@@ -63,7 +65,6 @@ unsetopt beep
 set editing-mode vi
 set blink-matching-paren on
 
-export PATH=~/.cabal/bin:$PATH
 
 alias ls='ls --color=auto'
 alias sl='ls --color=auto'
@@ -101,5 +102,43 @@ man() {
         LESS_TERMCAP_us=$'\E[04;38;5;146m' \
         man "$@"
 }
+
+# prepend_colon(val, var)
+prepend_colon() {
+  if [ -z "$2" ]; then
+    echo $1
+  else
+    echo $1:$2
+  fi
+}
+
+# unshift_path(path)
+unshift_path() {
+  if [ -d $1/sbin ]; then
+    export PATH=$(prepend_colon "$1/sbin" $PATH)
+  fi
+  if [ -d $1/bin ]; then
+    export PATH=$(prepend_colon "$1/bin" $PATH)
+  fi
+
+  if [ -d $1/share/man ]; then
+    export MANPATH=$(prepend_colon "$1/share/man" $MANPATH)
+  fi
+}
+
+# TABULA RASA
+export PATH=""
+export MANPATH=""
+
+unshift_path "/usr/X11"
+unshift_path ""
+unshift_path "/usr"
+unshift_path "/usr/local"
+unshift_path "/opt/local"
+unshift_path "$HOME/local"
+unshift_path "$HOME/etc"
+
+export PATH=$(prepend_colon ".local" $PATH)
+export PATH=~/.cabal/bin:$PATH
 
 [ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh

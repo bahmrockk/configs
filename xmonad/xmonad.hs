@@ -10,6 +10,7 @@ import MyLayout
 import MyBars -- bars and popup bars
 import MyScratchpads
 
+import XMonad.Hooks.FadeInactive
 
 myBlinkUrgencyHook :: SpawnUrgencyHook
 myBlinkUrgencyHook = SpawnUrgencyHook "~/.xmonad/scripts/blink.sh "
@@ -32,7 +33,7 @@ main = do
                             -- predefined windows behavior
                             ,manageHook            = myManageHook <+> namedScratchpadManageHook myScratchpads
                             -- state switch trigger with bar
-                            ,logHook               = myLogHook dzenLeftTopBar
+                            ,logHook               = myLogHook dzenLeftTopBar >> fadeInactiveCurrentWSLogHook 0.9
                             ,layoutHook            = myLayout
                             -- blah blah
                             ,borderWidth           = 1
