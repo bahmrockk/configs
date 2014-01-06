@@ -34,6 +34,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         -- shell/window prompts
         , ((modMask                 ,xK_Return   ), spawnHere $ XMonad.terminal conf)
         , ((modMask .|. shiftMask   ,xK_Return   ), spawnHere $ "firefox")
+        , ((modMask                 ,xK_d        ), spawn $ "/home/bahmrockk/.xmonad/scripts/world_clock.sh")
         , ((modMask .|. shiftMask   ,xK_z        ), spawn $ "/home/bahmrockk/.xmonad/scripts/show_keys_dzen.sh")
         , ((modMask                 ,xK_a        ), spawn "xclock")
         , ((modMask                 ,xK_space    ), runOrRaisePrompt mySP)
@@ -69,7 +70,6 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , ((modMask                 ,xK_BackSpace), toggleWS) 
         , ((modMask                 ,xK_y        ), toggleWS)
         -- Scratchpads
-        , ((modMask .|. controlMask .|. shiftMask, xK_t), namedScratchpadAction myScratchpads "htop")
         , ((modMask .|. controlMask .|. shiftMask, xK_s), namedScratchpadAction myScratchpads "goldendict")
         , ((modMask .|. controlMask .|. shiftMask, xK_n), namedScratchpadAction myScratchpads "notes")
         -- back in line, you dirty ape!

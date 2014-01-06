@@ -66,9 +66,9 @@ set editing-mode vi
 set blink-matching-paren on
 
 
-alias ls='ls --color=auto'
-alias sl='ls --color=auto'
-alias la='ls --color=auto -la'
+alias ls='ls --color=auto --group-directories-first'
+alias sl='ls --color=auto --group-directories-first'
+alias la='ls --color=auto -la --group-directories-first'
 alias vi='vim'
 
 ColorCursor=#0f0f49499999

@@ -1,5 +1,5 @@
 #!/bin/sh
-DURATION=30
+DURATION=6
 FGCOL=green
 BGCOL=black
 TITLECOL=green4

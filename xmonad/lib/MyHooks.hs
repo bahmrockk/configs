@@ -57,7 +57,7 @@ myManageHook = (composeAll . concat $
  
         -- classnames
         myFloatRoles = ["gimp-toolbox"]
-        myFloats  = ["Xmessage", "Downloads", "Popup"]
+        myFloats  = ["Xmessage", "Downloads", "Popup", "viewnior"]
         myWebs      = [] --TODO: Find a way to spawn on other WS than the hooked one
         myMedia     = ["Plugin-container", "Google-chrome","Chromium", "Chromium-browser"]
         myMusic	    = ["Spotify"]
