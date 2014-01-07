@@ -13,6 +13,10 @@ fi
 ### CHECKOUT IF USEFUL: trayer
 #xf86-video-nv or xf86-video-ati
 # Packages which are needed for what is configured here
+printf "What's your username you set this up for?"
+read user
+id -u $user &>/dev/null || useradd -m $user 
+
 printf "Do you use 1) nvidia card or 2) ati card? (any other card: install drivers manually beforehand! press any other key to quit [1|2|q]"
 read choice
 shopt -s nocasematch
@@ -30,7 +34,7 @@ sudo pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
 sudo pacman -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot # -- needed
 # Packages which I like or want in addition to the core
 sudo pacman -S firefox chromium thunderbird pidgin pidgin-otr ntp flashplugin viewnior 
-sudo chsh -s zsh bahmrockk
+sudo chsh -s zsh $user
 
 #packages from the AUR world:
 #DISCLAIMER: Those packages are not official. I checked them and found nothing but that's worth just as much.
