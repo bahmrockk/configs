@@ -10,6 +10,8 @@ read choice
 shopt -s nocasematch
 case "$choice" in
     yes)
+        rm -f ~/.xscreensaver
+        ln -s $SELFPATH/xscreensaver ~/.xscreensaver
         rm -f ~/.Xresources
         ln -s $SELFPATH/Xresources ~/.Xresources
         rm -f ~/.vimrc

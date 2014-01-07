@@ -29,6 +29,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [   -- Restart xmonad
           ((modMask .|. shiftMask .|. controlMask , xK_q), broadcastMessage ReleaseResources >> restart "xmonad" True)
         , ((modMask .|. shiftMask .|. controlMask , xK_BackSpace),io (exitWith ExitSuccess))
+        , ((modMask                               , xK_l), spawn $ "xscreensaver-command --lock")
         --menu/tab mode
         , ((modMask                 ,xK_Tab      ), goToSelected myGSConfig)        
         -- shell/window prompts

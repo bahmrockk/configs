@@ -14,6 +14,7 @@ fi
 xrdb ~/.Xresources
 xset m 1 0
 xsetroot -cursor_name left_ptr
+xscreensaver -no-splash &
 urxvtd -f
 compton & 
 pidgin &

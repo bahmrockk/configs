@@ -38,11 +38,11 @@ sudo chsh -s zsh $user
 
 #packages from the AUR world:
 #DISCLAIMER: Those packages are not official. I checked them and found nothing but that's worth just as much.
-yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git grive cowfortune
+yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git grive cowfortune compton
 
 #packages to take a closer look at:
 #sudo pacman -S 
-#yaourt -S compton
+#https://aur.archlinux.org/packages/shantz-xwinwrap-bzr/
 
 echo
 echo "Do not forget to install: http://code.google.com/p/skype4pidgin/ ."

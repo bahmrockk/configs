@@ -30,7 +30,7 @@ case "$TERM" in
 esac
 
 setopt INC_APPEND_HISTORY
-zstyle ':completion:*' completer _complete _ignored _correct _approximate
+zstyle ':completion:*' completer _complete _ignored _correct _approximate rehash true list-colors ""
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 zstyle :compinstall filename '/home/bahmrockk/.zshrc'
 
@@ -142,3 +142,5 @@ export PATH=$(prepend_colon ".local" $PATH)
 export PATH=~/.cabal/bin:$PATH
 
 [ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
+
+cowfortune
