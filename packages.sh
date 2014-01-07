@@ -27,7 +27,7 @@ case "$choice" in
     *) exit
     
 sudo pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
-sudo pacman -S rxvt feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot # -- needed
+sudo pacman -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot # -- needed
 # Packages which I like or want in addition to the core
 sudo pacman -S firefox chromium thunderbird pidgin pidgin-otr ntp flashplugin viewnior 
 sudo chsh -s zsh bahmrockk
