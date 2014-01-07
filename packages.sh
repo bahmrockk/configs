@@ -42,6 +42,7 @@ yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddar
 
 #packages to take a closer look at:
 #sudo pacman -S 
+#yaourt -S compton
 
 echo
 echo "Do not forget to install: http://code.google.com/p/skype4pidgin/ ."

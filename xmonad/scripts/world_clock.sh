@@ -1,5 +1,6 @@
 #!/bin/sh
 DURATION=6
+SEPERATOR=":"
 FGCOL=green
 BGCOL=black
 TITLECOL=green4
@@ -17,13 +18,13 @@ local_time=`date +"%H.%M"`
 #ger_location="Frankfurt"
 #ger_time=`TZ="Europe/Frankfurt" date +"%H.%M"`
 uk_location="London"
-uk_time=`TZ="Europe/London" date +"%H:%M"`
+uk_time=`TZ="Europe/London" date +"%H$SEPERATOR%M"`
 us_location="New York"
-us_time=`TZ="America/New_York" date +"%H:%M"`
+us_time=`TZ="America/New_York" date +"%H$SEPERATOR%M"`
 aus_location="Sydney"
-aus_time=`TZ="Australia/Sydney" date +"%H:%M"`
+aus_time=`TZ="Australia/Sydney" date +"%H$SEPERATOR%M"`
 jp_location="Tokyo"
-jp_time=`TZ="Asia/Tokyo" date +"%H:%M"`
+jp_time=`TZ="Asia/Tokyo" date +"%H$SEPERATOR%M"`
 
 if [ -e $LOCKFILE ]
 then

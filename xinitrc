@@ -15,7 +15,7 @@ xrdb ~/.Xresources
 xset m 1 0
 xsetroot -cursor_name left_ptr
 urxvtd -f
-xcompmgr & 
+compton & 
 pidgin &
 firefox &
 chromium &
