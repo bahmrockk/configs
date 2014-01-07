@@ -16,6 +16,7 @@ fi
 sudo pacman -S dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt # -- needed
 # Packages which I like or want in addition to the core
 sudo pacman -S firefox chromium thunderbird pidgin pidgin-otr playonlinux steam ntp flashplugin viewnior 
+sudo chsh -s zsh bahmrockk
 
 #packages from the AUR world:
 #DISCLAIMER: Those packages are not official. I checked them and found nothing but that's worth just as much.
