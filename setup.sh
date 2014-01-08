@@ -22,6 +22,9 @@ case "$choice" in
         ln -s $SELFPATH/xmonad ~/.xmonad
         rm -rf ~/.xinitrc
         ln -s $SELFPATH/xinitrc ~/.xinitrc
+        rm -rf ~/.config/vim/
+        ln -s $SELFPATH/vim/ ~/.config/
+        mkdir -p ~/.cache/zsh/
         $SELFPATH/dir_structure.sh
         $SELFPATH/packages.sh 
         printf "\ndone. You're now 20%% cooler. Good luck finding errors!\n"

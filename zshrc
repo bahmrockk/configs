@@ -12,25 +12,57 @@ bindkey -v
 
 #complete the "/" in dirs
 
+echo $TERM > ~/test
 case "$TERM" in
-        linux|screen)
+        (linux|screen)
                 bindkey "^[[1~" beginning-of-line       # Pos1
                 bindkey "^[[4~" end-of-line             # End
+                echo "2" > ~/test
         ;;
-        *xterm*|(dt|k)term)
+        (*xterm*|(dt|k)term)
                 bindkey "^[[H"  beginning-of-line       # Pos1
                 bindkey "^[[F"  end-of-line             # End
                 bindkey "^[[7~" beginning-of-line       # Pos1
                 bindkey "^[[8~" end-of-line             # End
+                echo "1" > ~/test 
         ;;
-        rxvt|Eterm)
+        (rxvt|Eterm)
                 bindkey "^[[7~" beginning-of-line       # Pos1
                 bindkey "^[[8~" end-of-line             # End
+                echo "3" > ~/test
         ;;
 esac
 
-setopt INC_APPEND_HISTORY
-zstyle ':completion:*' completer _complete _ignored _correct _approximate rehash true list-colors ""
+# http://zsh.sourceforge.net/Doc/Release/Shell-Builtin-Commands.html
+typeset -A key
+
+key[Home]=${terminfo[khome]}
+key[End]=${terminfo[kend]}
+key[Insert]=${terminfo[kich1]}
+key[Delete]=${terminfo[kdch1]}
+key[Up]=${terminfo[kcuu1]}
+key[Down]=${terminfo[kcud1]}
+key[Left]=${terminfo[kcub1]}
+key[Right]=${terminfo[kcuf1]}
+key[PageUp]=${terminfo[kpp]}
+key[PageDown]=${terminfo[knp]}
+
+# setup key accordingly
+[[ -n "${key[Home]}"     ]]  && bindkey  "${key[Home]}"     beginning-of-line
+[[ -n "${key[End]}"      ]]  && bindkey  "${key[End]}"      end-of-line
+[[ -n "${key[Insert]}"   ]]  && bindkey  "${key[Insert]}"   overwrite-mode
+[[ -n "${key[Delete]}"   ]]  && bindkey  "${key[Delete]}"   delete-char
+[[ -n "${key[Up]}"       ]]  && bindkey  "${key[Up]}"       up-line-or-history
+[[ -n "${key[Down]}"     ]]  && bindkey  "${key[Down]}"     down-line-or-history
+[[ -n "${key[Left]}"     ]]  && bindkey  "${key[Left]}"     backward-char
+[[ -n "${key[Right]}"    ]]  && bindkey  "${key[Right]}"    forward-char
+#defaults
+#[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"   beginning-of-buffer-or-history
+#[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}" end-of-buffer-or-history
+[[ -n "${key[PageUp]}"   ]]  && bindkey  "${key[PageUp]}"    history-beginning-search-backward
+[[ -n "${key[PageDown]}" ]]  && bindkey  "${key[PageDown]}"  history-beginning-search-forward
+
+zstyle ':completion:*' menu select completer _complete _ignored _correct _approximate rehash true list-colors ""
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 zstyle :compinstall filename '/home/bahmrockk/.zshrc'
 
@@ -45,8 +77,8 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 
+setopt INC_APPEND_HISTORY
 #one history
-setopt appendhistory 
 
 #[dir] as [cd dir]
 setopt autocd 
@@ -54,6 +86,24 @@ setopt autocd
 #pushd instead of cd, use popd to go back to the folder you came from
 setopt AUTO_PUSHD
 alias cdb=popd
+
+DIRSTACKFILE="$HOME/.cache/zsh/dirs"
+if [[ -f $DIRSTACKFILE ]] && [[ $#dirstack -eq 0 ]]; then
+      dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+        [[ -d $dirstack[1] ]] && cd $dirstack[1]
+    fi
+    chpwd() {
+          print -l $PWD ${(u)dirstack} >$DIRSTACKFILE
+      }
+
+DIRSTACKSIZE=20
+
+setopt autopushd pushdsilent pushdtohome
+## Remove duplicate entries
+setopt pushdignoredups
+
+### This reverts the +/- operators.
+setopt pushdminus
 
 setopt extendedglob 
 

@@ -14,9 +14,9 @@ LOCKFILE="/tmp/worldclock.sh_visible"
 
 pids=`pidof dzen2`
 local_location="Frankfurt"
-local_time=`date +"%H.%M"`
+local_time=`date +"%H$SEPERATOR%M"`
 #ger_location="Frankfurt"
-#ger_time=`TZ="Europe/Frankfurt" date +"%H.%M"`
+#ger_time=`TZ="Europe/Frankfurt" date +"%H$SEPERATOR%M"`
 uk_location="London"
 uk_time=`TZ="Europe/London" date +"%H$SEPERATOR%M"`
 us_location="New York"
