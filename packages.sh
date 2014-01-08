@@ -1,13 +1,12 @@
 #!/bin/sh
 
 #add the yauort repository 
-if ! grep -q archlinuxfr /etc/pacman.conf; then
+if ! grep -q archlinuxfr /etc/pacman; then
     sudo sh -c 'echo "
 [archlinuxfr]
 SigLevel = Optional TrustAll
-Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf'
+Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman --needed.conf'
     sudo pacman -Syu
-    yaourt -Syua # SHOULD be useless, but better safe than ...
 fi
 
 ### CHECKOUT IF USEFUL: trayer
@@ -22,26 +21,28 @@ read choice
 shopt -s nocasematch
 case "$choice" in
     1) 
-    sudo pacman -S xf86-video-nvidia nvidia nvidia-utils
+    sudo pacman --needed -S xf86-video-nvidia nvidia nvidia-utils
     sudo modprobe nvidia
     ;;
     2) 
-    sudo pacman -S xf86-video-ati lib32-ati-dri
+    sudo pacman --needed -S xf86-video-ati lib32-ati-dri
     sudo modprobe radeon
-    *) exit
+    ;;
+    *) exit;;
 esac    
-sudo pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
-sudo pacman -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot gvim transset-df # -- needed
+sudo pacman --needed -S xorg-server xorg-xinit xorg-utils xorg-server-utils
+sudo pacman --needed -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot gvim transset-df  
 # Packages which I like or want in addition to the core
-sudo pacman -S firefox chromium thunderbird pidgin pidgin-otr ntp flashplugin viewnior 
+sudo pacman --needed -S firefox chromium thunderbird pidgin pidgin-otr ntp flashplugin viewnior 
 sudo chsh -s zsh $user
 
+yaourt -Syu
 #packages from the AUR world:
 #DISCLAIMER: Those packages are not official. I checked them and found nothing but that's worth just as much.
 yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git grive cowfortune compton
 
 #packages to take a closer look at:
-#sudo pacman -S 
+#sudo pacman --needed -S 
 #https://aur.archlinux.org/packages/shantz-xwinwrap-bzr/
 
 echo
