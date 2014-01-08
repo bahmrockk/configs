@@ -29,9 +29,9 @@ case "$choice" in
     sudo pacman -S xf86-video-ati lib32-ati-dri
     sudo modprobe radeon
     *) exit
-    
+esac    
 sudo pacman -S xorg-server xorg-xinit xorg-utils xorg-server-utils
-sudo pacman -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot # -- needed
+sudo pacman -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot gvim transset-df # -- needed
 # Packages which I like or want in addition to the core
 sudo pacman -S firefox chromium thunderbird pidgin pidgin-otr ntp flashplugin viewnior 
 sudo chsh -s zsh $user
