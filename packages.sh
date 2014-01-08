@@ -1,11 +1,11 @@
 #!/bin/sh
 
 #add the yauort repository 
-if ! grep -q archlinuxfr /etc/pacman; then
+if ! grep -q archlinuxfr /etc/pacman.conf; then
     sudo sh -c 'echo "
 [archlinuxfr]
 SigLevel = Optional TrustAll
-Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman --needed.conf'
+Server = http://repo.archlinux.fr/\$arch" >> /etc/pacman.conf'
     sudo pacman -Syu
 fi
 
@@ -16,7 +16,7 @@ printf "What's your username you set this up for?"
 read user
 id -u $user &>/dev/null || useradd -m $user 
 
-printf "Do you use 1) nvidia card or 2) ati card? (any other card: install drivers manually beforehand! press any other key to quit [1|2|q]"
+printf "Do you use 1) nvidia card or 2) ati card? (any other card: install drivers manually beforehand! press q to quit or any other key to continue. [1|2|q]"
 read choice
 shopt -s nocasematch
 case "$choice" in
@@ -28,8 +28,10 @@ case "$choice" in
     sudo pacman --needed -S xf86-video-ati lib32-ati-dri
     sudo modprobe radeon
     ;;
-    *) exit;;
+    q) exit;;
+    *) echo "ok";;
 esac    
+sudo pacman -R vim
 sudo pacman --needed -S xorg-server xorg-xinit xorg-utils xorg-server-utils
 sudo pacman --needed -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot gvim transset-df  
 # Packages which I like or want in addition to the core
