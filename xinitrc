@@ -13,6 +13,7 @@ fi
 
 xrdb ~/.Xresources
 xset m 1 0
+xset -b
 xsetroot -cursor_name left_ptr
 xscreensaver -no-splash &
 urxvtd -f
@@ -21,6 +22,7 @@ pidgin &
 firefox &
 chromium &
 thunderbird &
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true  --transparent true --alpha 256 --height 22 --heighttype pixel --margin 200 --SetDockType true --monitor 0 --widthtype pixel --tint 0x000000 &
 feh --bg-fill ~/.xmonad/res/bg/curve.jpg &
 export BROWSER="firefox"
 

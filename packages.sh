@@ -41,7 +41,7 @@ sudo chsh -s zsh $user
 yaourt -Syu
 #packages from the AUR world:
 #DISCLAIMER: Those packages are not official. I checked them and found nothing but that's worth just as much.
-yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git grive cowfortune compton
+yaourt -S --noconfirm spotify command-not-found gtkclock gtk2-theme-solarizeddark-git grive cowfortune compton trayer-srg
 
 #packages to take a closer look at:
 #sudo pacman --needed -S 

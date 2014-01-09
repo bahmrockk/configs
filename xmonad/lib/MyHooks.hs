@@ -16,6 +16,8 @@ import XMonad
 import qualified XMonad.StackSet as W
 import XMonad.Util.NamedWindows
 
+import XMonad.Layout.NoBorders
+
 import MyScratchpads
 
 import XMonad.Actions.WorkspaceNames 
@@ -38,7 +40,7 @@ myManageHook :: ManageHook
 myManageHook = (composeAll . concat $
     [[role         =? r --> doCenterFloat      |  r <- myFloatRoles    ]
 --     [role         =? r --> :
-    ,[resource     =? r --> doIgnore           |  r <- myIgnores       ]
+    ,[className    =? c --> doIgnore           |  c <- myIgnores       ]
     ,[className    =? c --> doShift "Main"     |  c <- myDev           ]
     ,[className    =? c --> doShift "Web"      |  c <- myWebs          ]
     ,[className    =? c --> doShift "Consoles" |  c <- myConsoles      ]
@@ -50,14 +52,15 @@ myManageHook = (composeAll . concat $
     ,[className    =? c --> doCenterFloat      |  c <- myFloats        ]
     ,[name         =? n --> doCenterFloat      |  n <- myFloatNamed    ]
  --   ,[isFullscreen --> myDoFullFloat                                   ]  
-    ]) <+> namedScratchpadManageHook myScratchpads 
+    ,[manageDocks]]
+    ) <+> namedScratchpadManageHook myScratchpads 
     where
         role      = stringProperty "WM_WINDOW_ROLE"
         name      = stringProperty "WM_NAME"
  
         -- classnames
         myFloatRoles = ["gimp-toolbox"]
-        myFloats  = ["Xmessage", "Downloads", "Popup", "viewnior"]
+        myFloats  = ["Xmessage", "Downloads", "Popup", "viewnior","trayer"]
         myWebs      = [] --TODO: Find a way to spawn on other WS than the hooked one
         myMedia     = ["Plugin-container", "Google-chrome","Chromium", "Chromium-browser"]
         myMusic	    = ["Spotify"]
@@ -71,7 +74,6 @@ myManageHook = (composeAll . concat $
  
         -- center Floats
         myFloatNamed = ["bashrun","Google Chrome Options","Chromium Options"]
- 
         -- a trick for fullscreen but stil allow focusing of other WSs
         myDoFullFloat :: ManageHook
         myDoFullFloat = doF W.focusDown <+> doFullFloat
