@@ -16,7 +16,7 @@ myBlinkUrgencyHook :: SpawnUrgencyHook
 myBlinkUrgencyHook = SpawnUrgencyHook "~/.xmonad/scripts/blink.sh "
 
 bar = dzenXMonadBar -- { MyBars.dzenBGCOlor = "#ffffff" } 
--- tray = trayerXMonadTray
+tray = "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true  --transparent true --alpha 256 --height 22 --heighttype pixel --margin 200 --SetDockType true --monitor 0 --widthtype pixel --tint 0x000000"
 
 main = do
     dzenLeftTopBar <- spawnPipe bar
