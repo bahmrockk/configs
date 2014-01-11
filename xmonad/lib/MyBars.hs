@@ -25,4 +25,3 @@ dzenXMonadBar =
                   ++" -y 0"  -- y offset
                   ++" -h 24" -- height
                   ++" -xs 1" -- on monitor X <- defaultColors
-

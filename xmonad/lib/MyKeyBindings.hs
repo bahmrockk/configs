@@ -24,7 +24,9 @@ checkUrgentBlink = do
             then do spawn $ "touch /tmp/noblink"
             else return () 
 
- 
+-- 1 to 9    = --> workspaces
+-- F1 to F3  = --> screens
+--  + shift  = --> shift current window there
 myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
     [   -- Restart xmonad
           ((modMask .|. shiftMask .|. controlMask , xK_q), broadcastMessage ReleaseResources >> restart "xmonad" True)
@@ -32,12 +34,12 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , ((modMask                               , xK_l), spawn $ "xscreensaver-command --lock")
         --menu/tab mode
         , ((modMask                 ,xK_Tab      ), goToSelected myGSConfig)        
+
         -- shell/window prompts
         , ((modMask                 ,xK_Return   ), spawnHere $ XMonad.terminal conf)
         , ((modMask .|. shiftMask   ,xK_Return   ), spawnHere $ "firefox")
-        , ((modMask                 ,xK_d        ), spawn $ "/home/bahmrockk/.xmonad/scripts/world_clock.sh")
+        , ((modMask                 ,xK_a        ), spawn $ "/home/bahmrockk/.xmonad/scripts/world_clock.sh")
         , ((modMask .|. shiftMask   ,xK_z        ), spawn $ "/home/bahmrockk/.xmonad/scripts/show_keys_dzen.sh")
-        , ((modMask                 ,xK_a        ), spawn "xclock")
         , ((modMask                 ,xK_space    ), runOrRaisePrompt mySP)
         , ((modMask .|. shiftMask   ,xK_space    ), shellPrompt mySP)
         , ((modMask .|. controlMask ,xK_space    ), windowPromptGoto mySP)
@@ -71,11 +73,13 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , ((modMask                 ,xK_BackSpace), toggleWS) 
         , ((modMask                 ,xK_y        ), toggleWS)
         -- Scratchpads
-        , ((modMask .|. controlMask .|. shiftMask, xK_s), namedScratchpadAction myScratchpads "goldendict")
-        , ((modMask .|. controlMask .|. shiftMask, xK_n), namedScratchpadAction myScratchpads "notes")
+        , ((modMask .|. shiftMask, xK_m          ), namedScratchpadAction myScratchpads "goldendict")
+        , ((modMask .|. shiftMask, xK_n          ), namedScratchpadAction myScratchpads "notes")
+        , ((modMask .|. shiftMask, xK_b          ), namedScratchpadAction myScratchpads "tasks")
+
         -- back in line, you dirty ape!
-        , ((modMask,               xK_t     ), withFocused $ windows . W.sink)
-        , ((modMask, xK_p),              sequence_ [toggleWS, checkUrgentBlink])
+        , ((modMask,               xK_t          ), withFocused $ windows . W.sink)
+        , ((modMask,              xK_p           ), sequence_ [toggleWS, checkUrgentBlink])
 
    ]
     ++ -- switch between workspaces

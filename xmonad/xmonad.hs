@@ -16,11 +16,11 @@ myBlinkUrgencyHook :: SpawnUrgencyHook
 myBlinkUrgencyHook = SpawnUrgencyHook "~/.xmonad/scripts/blink.sh "
 
 bar = dzenXMonadBar -- { MyBars.dzenBGCOlor = "#ffffff" } 
-tray = "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true  --transparent true --alpha 256 --height 22 --heighttype pixel --margin 200 --SetDockType true --monitor 0 --widthtype pixel --tint 0x000000"
+--tray = "trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true  --transparent true --alpha 255 --height 22 --heighttype pixel --margin 200 --SetDockType true --monitor 1 --widthtype pixel --tint 0x000000"
 
 main = do
     dzenLeftTopBar <- spawnPipe bar
-    trayRightTop   <- spawnPipe tray
+--    trayRightTop   <- spawnPipe tray
     xmonad 
            $ withUrgencyHookC LibNotifyUrgencyHook myUrgencyHookConfig
            $ withUrgencyHook myBlinkUrgencyHook
@@ -35,7 +35,8 @@ main = do
                             -- predefined windows behavior
                             ,manageHook            = myManageHook <+> namedScratchpadManageHook myScratchpads
                             -- state switch trigger with bar
-                            ,logHook               = myLogHook dzenLeftTopBar <+> myLogHook trayRightTop >> fadeInactiveCurrentWSLogHook 0.9
+                            ,logHook               = myLogHook dzenLeftTopBar >> fadeInactiveCurrentWSLogHook 0.9
+--                            ,logHook               = myLogHook dzenLeftTopBar <+> myLogHook trayRightTop >> fadeInactiveCurrentWSLogHook 0.9
                             ,layoutHook            = myLayout
                             -- blah blah
                             ,borderWidth           = 1

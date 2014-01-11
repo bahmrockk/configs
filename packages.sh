@@ -25,7 +25,7 @@ case "$choice" in
     sudo modprobe nvidia
     ;;
     2) 
-    sudo pacman --needed -S xf86-video-ati lib32-ati-dri
+    sudo pacman --needed -S xf86-video-ati
     sudo modprobe radeon
     ;;
     q) exit;;
@@ -36,8 +36,7 @@ sudo pacman --needed -S xorg-server xorg-xinit xorg-utils xorg-server-utils
 sudo pacman --needed -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot gvim transset-df  
 # Packages which I like or want in addition to the core
 sudo pacman --needed -S firefox chromium thunderbird pidgin pidgin-otr ntp flashplugin viewnior patch
-sudo chsh -s zsh $user
-
+udo chsh -s $(which zsh) $user 
 yaourt -Syu
 #packages from the AUR world:
 #DISCLAIMER: Those packages are not official. I checked them and found nothing but that's worth just as much.

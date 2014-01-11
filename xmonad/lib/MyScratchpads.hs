@@ -6,7 +6,8 @@ import XMonad.Util.NamedScratchpad
 
 -- format & inspiration found @ http://pbrisbin.com/tags/xmonad/
 myScratchpads = [
-     NS "goldendict" "goldendict" (className =? "Goldendict") placeWin 
+     NS "goldendict" "goldendict" (className =? "Goldendict") placeWin
+    ,NS "tasks" "tasque" (className =? "Tasque") placeWin
     ,NS "notes" spawnGvim  findGvim placeWin 
     ] 
     where

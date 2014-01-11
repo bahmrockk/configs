@@ -194,3 +194,4 @@ export PATH=~/.cabal/bin:$PATH
 [ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
 
 cowfortune
+export EDITOR="vim"
