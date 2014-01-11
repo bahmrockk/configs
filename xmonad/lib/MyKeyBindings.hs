@@ -1,7 +1,7 @@
 module MyKeyBindings where
 
 import XMonad
-import XMonad.Prompt
+import XMonad.Prompt as P
 import XMonad.Prompt.RunOrRaise
 import XMonad.Prompt.Shell
 import XMonad.Prompt.Window
@@ -11,8 +11,11 @@ import XMonad.Actions.SpawnOn
 import XMonad.Hooks.UrgencyHook
 import XMonad.Util.NamedScratchpad
 import XMonad.Layout.Monitor
+import XMonad.Actions.Search as S
+import XMonad.Util.Paste
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
+import qualified XMonad.Actions.Submap as SM
 
 import System.Exit
 import MyScratchpads
@@ -33,13 +36,16 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         , ((modMask .|. shiftMask .|. controlMask , xK_BackSpace),io (exitWith ExitSuccess))
         , ((modMask                               , xK_l), spawn $ "xscreensaver-command --lock")
         --menu/tab mode
-        , ((modMask                 ,xK_Tab      ), goToSelected myGSConfig)        
-
+        , ((modMask                 ,xK_Tab      ), goToSelected myGSConfig)
+        , ((modMask                 ,xK_s        ), SM.submap $ searchEngineMap $ promptSearch defaultXPConfig)  
+        , ((modMask .|. shiftMask, xK_s), SM.submap $ searchEngineMap $ S.selectSearch)
+        -- X-selection-paste buffer
+        , ((modMask                 , xK_Insert  ), pasteSelection)
         -- shell/window prompts
         , ((modMask                 ,xK_Return   ), spawnHere $ XMonad.terminal conf)
         , ((modMask .|. shiftMask   ,xK_Return   ), spawnHere $ "firefox")
         , ((modMask                 ,xK_a        ), spawn $ "/home/bahmrockk/.xmonad/scripts/world_clock.sh")
-        , ((modMask .|. shiftMask   ,xK_z        ), spawn $ "/home/bahmrockk/.xmonad/scripts/show_keys_dzen.sh")
+        , ((modMask                 ,xK_z        ), spawn $ "/home/bahmrockk/.xmonad/scripts/show_keys_dzen.sh")
         , ((modMask                 ,xK_space    ), runOrRaisePrompt mySP)
         , ((modMask .|. shiftMask   ,xK_space    ), shellPrompt mySP)
         , ((modMask .|. controlMask ,xK_space    ), windowPromptGoto mySP)
@@ -95,6 +101,16 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 --        | k <- [xK_1 .. xK_9]
 --        , m <- [0, shiftMask]]
 -- Default mouse bindings. They're actually useful!
+searchEngineMap method = M.fromList list
+    where
+        list = map (\(key, engine) -> ((0, key), method engine))
+                   [ (xK_a, alpha)
+                 , (xK_w, wikipedia)
+                 , (xK_m, maps)
+                 , (xK_i, images)
+                 , (xK_h, hoogle)
+                 , (xK_g, google)
+                   ]
 
 myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList
     -- mod-button1 %! Set the window to floating mode and move by dragging

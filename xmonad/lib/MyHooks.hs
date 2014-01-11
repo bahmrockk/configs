@@ -74,7 +74,7 @@ myManageHook = (composeAll . concat $
         myIgnores = []
  
         -- center Floats
-        myFloatNamed = ["bashrun","Google Chrome Options","Chromium Options"]
+        myFloatNamed = ["bashrun","Google Chrome Options","Chromium Options", "Tasque"]
         -- a trick for fullscreen but stil allow focusing of other WSs
         myDoFullFloat :: ManageHook
         myDoFullFloat = doF W.focusDown <+> doFullFloat

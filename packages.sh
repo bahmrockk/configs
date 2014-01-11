@@ -33,7 +33,7 @@ case "$choice" in
 esac    
 sudo pacman -R vim
 sudo pacman --needed -S xorg-server xorg-xinit xorg-utils xorg-server-utils
-sudo pacman --needed -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot gvim transset-df  
+sudo pacman --needed -S rxvt-unicode feh dzen2 xmonad xmonad-contrib zsh git slim pkgfile pkgfile lxrandr wget goldendict bc yaourt fakeroot gvim transset-df unclutter tasque volumeicon  
 # Packages which I like or want in addition to the core
 sudo pacman --needed -S firefox chromium thunderbird pidgin pidgin-otr ntp flashplugin viewnior patch
 udo chsh -s $(which zsh) $user 

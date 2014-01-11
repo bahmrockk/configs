@@ -18,15 +18,13 @@ xsetroot -cursor_name left_ptr
 xscreensaver -no-splash &
 urxvtd -f
 compton & 
-pidgin &
-firefox &
-chromium &
-thunderbird &
-if [ -e ~/.xinitrc_local ]; then
-    ~/.xinitrc_local
-fi
+unclutter -idle 5 -root -jitter 5 &
 
-# trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true  --transparent true --alpha 256 --height 22 --heighttype pixel --margin 200 --SetDockType true --monitor 0 --widthtype pixel --tint 0x000000 &
+if [ -e ~/.xinitrc_local ]; then
+    ~/.xinitrc_local &
+fi
+(sleep 2&&trayer --edge top --align right --height 22 --heighttype pixel --margin 0 --SetDockType true --monitor 1 --widthtype pixel --width 240 --transparent true --alpha 0 --tint 0x1b1e1f&sleep 0.2&&volumeicon&fbxkb&)&
+
 feh --bg-fill ~/.xmonad/res/bg/curve.jpg &
 export BROWSER="firefox"
 

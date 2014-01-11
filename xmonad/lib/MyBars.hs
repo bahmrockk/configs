@@ -14,7 +14,7 @@ defaultColors = DzenBar {
  }   
 
 dzenXMonadBar =  
-   ("dzen2 -p -w 750" ++ dzenProperties)
+   ("dzen2 -p " ++ dzenProperties)
    where
 --   dzenBGColor = "#1B1D1E"
 --   dzenFGColor = "#646464"
