@@ -18,7 +18,7 @@ xsetroot -cursor_name left_ptr
 xscreensaver -no-splash &
 urxvtd -f
 compton & 
-unclutter -idle 5 -root -jitter 5 &
+unclutter -idle 5 -root &
 
 if [ -e ~/.xinitrc_local ]; then
     ~/.xinitrc_local &

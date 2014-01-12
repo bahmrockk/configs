@@ -185,11 +185,12 @@ unshift_path ""
 unshift_path "/usr"
 unshift_path "/usr/local"
 unshift_path "/opt/local"
-unshift_path "$HOME/local"
+unshift_path "$HOME"
 unshift_path "$HOME/etc"
+unshift_path "$HOME/.cabal"
 
-export PATH=$(prepend_colon ".local" $PATH)
-export PATH=~/.cabal/bin:$PATH
+#export PATH=$(prepend_colon ".local" $PATH)
+#export PATH=~/.cabal/bin:$PATH
 
 [ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
 
