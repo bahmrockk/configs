@@ -11,6 +11,7 @@ import XMonad.Actions.SpawnOn
 import XMonad.Hooks.UrgencyHook
 import XMonad.Util.NamedScratchpad
 import XMonad.Layout.Monitor
+import XMonad.Hooks.ManageDocks
 import XMonad.Actions.Search as S
 import XMonad.Util.Paste
 import qualified XMonad.StackSet as W
@@ -35,6 +36,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
           ((modMask .|. shiftMask .|. controlMask , xK_q), broadcastMessage ReleaseResources >> restart "xmonad" True)
         , ((modMask .|. shiftMask .|. controlMask , xK_BackSpace),io (exitWith ExitSuccess))
         , ((modMask                               , xK_l), spawn $ "xscreensaver-command --lock")
+        , ((modMask .|. shiftMask                 , xK_Escape), sendMessage ToggleStruts)
         --menu/tab mode
         , ((modMask                 ,xK_Tab      ), goToSelected myGSConfig)
         , ((modMask                 ,xK_s        ), SM.submap $ searchEngineMap $ promptSearch defaultXPConfig)  
