@@ -29,3 +29,4 @@ feh --bg-fill ~/.xmonad/res/bg/curve.jpg &
 export BROWSER="firefox"
 
 exec xmonad
+export _JAVA_AWT_WM_NONREPARENTING=1
