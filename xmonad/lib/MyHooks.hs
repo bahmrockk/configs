@@ -70,8 +70,8 @@ myManageHook = (composeAll . concat $
         myDev	    = ["Eclipse"]
         myConsoles  = ["xterm"]
         myMail      = ["Mail", "Thunderbird"]
-        -- resources
-        myIgnores = []
+        -- resourcs
+        myIgnores = ["Tickr"]
  
         -- center Floats
         myFloatNamed = ["bashrun","Google Chrome Options","Chromium Options", "Tasque"]
