@@ -197,6 +197,8 @@ for_window [title="sudo"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 
+#Allow for gaps to properly work
+#for_window [class="^.*"] border pixel 0
 # switch to workspace with urgent window automatically
 # for_window [urgent=latest] focus
 
@@ -267,36 +269,45 @@ exec --no-startup-id xscreensaver -nosplash
 exec --no-startup-id redshift 
 exec --no-startup-id keepassx2 ~/ownCloud/PasswordDatabase.xdbx
 exec --no-startup-id synapse -s
+exec --no-startup-id unclutter -idle 3 -root
 exec --no-startup-id owncloud
 exec --no-startup-id setxkbmap -model pc105 -layout us,de -option grp:shifts_toggle
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	status_command i3status
+#status_command i3status
 	position top 
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 	tray_output primary
-	tray_output eDP1
-
+        tray_output eDP1
+        tray_padding 3 
+        separator_symbol ":|:"
 	bindsym button4 nop
 	bindsym button5 nop
 	font xft:Noto Sans 10.5
 	strip_workspace_numbers yes 
 
 	colors {
-#	background $transparent
-        background #2B2C2B
-        statusline #F9FAF9
-        separator  #454947
-
-#                                  border  backgr. text
-        focused_workspace  #F9FAF9 #16A085 #2B2C2B
-        active_workspace   #595B5B #353836 #FDF6E3
-        inactive_workspace #595B5B #353836 #EEE8D5
-        urgent_workspace   #16A085 #FDF6E3 #E5201D
-    }
+            #background $transparent
+            background #2B2C2B
+            statusline #F9FAF9
+            separator  #454947
+    
+            #                   border  backgr. text
+            focused_workspace  #F9FAF9 #16A085 #2B2C2B
+            active_workspace   #595B5B #353836 #FDF6E3
+            inactive_workspace #595B5B #353836 #EEE8D5
+            urgent_workspace   #16A085 #FDF6E3 #E5201D
+        }
 }
 
+#bar {
+#    tray_output none 
+#    workspace_buttons no
+#    colors {
+#        background #2b2c2b
+#    }
+#}
 # hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
 
