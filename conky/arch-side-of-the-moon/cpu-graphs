@@ -1,0 +1,25 @@
+double_buffer yes
+xinerama_head 0
+alignment bottom_left
+gap_x 10
+gap_y 10
+own_window yes
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+use_xft yes
+xftalpha 0.1
+xftfont Droid Sans:size=15
+update_interval 1
+color0 white
+color1 2372b2
+
+TEXT
+${color1}CPU${hr}
+${cpubar cpu1 10, 500}
+${cpubar cpu2 10, 500}
+${cpubar cpu3 10, 500}
+${cpubar cpu4 10, 500}
+${cpubar cpu5 10, 500}
+${cpubar cpu6 10, 500}
+${cpubar cpu7 10, 500}
+${cpubar cpu8 10, 500}

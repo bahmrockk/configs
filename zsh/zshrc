@@ -1,0 +1,153 @@
+HOME=`eval echo ~`
+ZSH=$HOME"/.config/zsh"
+# Lines configured by zsh-newuser-install
+HISTFILE=~/.histfile
+HISTSIZE=1000
+SAVEHIST=1000
+setopt appendhistory extendedglob
+setopt HIST_IGNORE_DUPS
+
+if [[ -e $HOME/.config/zsh/dircolors ]] then
+    eval `dircolors ~/.config/zsh/dircolors`
+fi
+
+unsetopt beep
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '$HOME/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+setopt completealiases
+zstyle 'Lcompletion:*' menu select
+setopt HIST_IGNORE_DUPS
+
+source /usr/share/zsh/scripts/antigen/antigen.zsh
+
+
+antigen bundles <<EOBUNDLES
+colored-man-pages #guess
+zsh-users/zsh-syntax-highlighting #highlight for the console while typing
+zsh-users/zsh-completions src
+#zsh-users/zaw #command prompt/completion
+
+EOBUNDLES
+antigen apply
+
+# include all lib config files
+local zshpath
+zshpath="$ZSH/lib"
+if [ "$(ls -A $zshpath)" ]; then
+    for config_file ($zshpath/*.zsh) 
+        source $config_file
+    fi
+
+#lazy command-not-found
+
+#Vimmode
+bindkey -v
+#reduce lag between mode switch
+export KEYTIMEOUT=1
+#Custom Prompt
+autoload -U promptinit
+promptinit
+
+###
+#CUSTOM PROMPT
+###
+local p_left p_right p_prompt ps1
+autoload -Uz vcs_info
+
+#Second coloring used to circumvent a bug: %b removes bold as well
+p_right="%F{cyan}[%D{%a %d.%m.%Y} %B%D{%R %Z}%b%f%F{cyan}]%f"
+
+p_left=""
+
+p_prompt="[%~]%# "
+
+#Construct the prompt itself
+
+#zmodload -i zsh/parameter 
+
+set_ps1()
+{
+    ps1=(
+    "$p_left"
+    ${(l:COLUMNS-32:)}
+    "$p_right" 
+    $'\n'
+    "$p_prompt"
+    #$ps1[-1]
+    )
+
+    PS1="${(j::)ps1}"
+    PS2=PS1
+}
+
+set_ps1
+
+#re-set prompt on window resize
+TRAPWINCH()
+{
+    set_ps1
+}
+
+
+#cnf default
+if [ -e /usr/share/doc/pkgfile/command-not-found.zs ]; then
+    source /usr/share/doc/pkgfile/command-not-found.zsh
+fi
+
+
+# xfce4-terminal specifics
+bindkey "^[OH" beginning-of-line  
+bindkey "^[[3~" delete-char
+bindkey "^[OF" end-of-line
+
+
+# key bindings
+bindkey "e[1~" beginning-of-line
+bindkey "e[4~" end-of-line
+bindkey "e[5~" beginning-of-history
+bindkey "e[6~" end-of-history
+bindkey "e[3~" delete-char
+bindkey "^[3;5~" delete-char
+bindkey "\e[3~" delete-char #this one does the trick for LENOVO
+bindkey "e[2~" quoted-insert
+bindkey "e[5C" forward-word
+bindkey "eOc" emacs-forward-word
+bindkey "e[5D" backward-word
+bindkey "eOd" emacs-backward-word
+bindkey "ee[C" forward-word
+bindkey "ee[D" backward-word
+bindkey "^H" backward-delete-word
+# for rxvt
+bindkey "e[8~" end-of-line
+bindkey "e[7~" beginning-of-line
+# for non RH/Debian xterm, can't hurt for RH/DEbian xterm
+bindkey "eOH" beginning-of-line
+bindkey "eOF" end-of-line
+# for freebsd console
+bindkey "e[H" beginning-of-line
+bindkey "e[F" end-of-line
+# completion in the middle of a line
+bindkey '^i' expand-or-complete-prefix
+
+#for urxvt
+bindkey "^[[7~" beginning-of-line
+bindkey "^[[8~" end-of-line
+
+bindkey "^R" history-incremental-pattern-search-backward
+
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search # Up
+bindkey "^[[B" down-line-or-beginning-search # Down
+
+
+#bindkey "^[[A" history-beginning-search-backward
+#bindkey "^[[B" history-beginning-search-forward
+

@@ -1,0 +1,23 @@
+double_buffer yes
+xinerama_head 0
+alignment bottom_right
+gap_x 0
+gap_y 10
+own_window yes
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+use_xft yes
+xftalpha 0.1
+xftfont Droid Sans:size=15
+update_interval 1
+color0 white
+color1 2372b2
+
+TEXT
+${color1}Memory${hr}
+${membar 10, 500}
+${swapbar 10, 500}
+File System${hr}
+${fs_bar 10, 500}
+${fs_bar 10, 500 /home/jake/HDD}
+${fs_bar 10, 500 /home/jake/SSD}

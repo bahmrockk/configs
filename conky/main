@@ -1,0 +1,41 @@
+conky.config = {
+alignment = 'top_right',
+minimum_width = 250,
+default_color = 'white',
+font = 'Bitstream Vera Sans:size=12',
+use_xft = true,
+own_window = true,
+own_window_transparent = true,
+own_window_type = 'override',
+double_buffer = true,
+update_interval = 2.0,
+color0 = 'white',
+color1 = '2372b2',
+color2 = 'ffbaba',
+gap_x = 26,
+gap_y = 13
+}
+
+conky.text = [[
+${alignc}${font Open Sans Light:pixelsize=55}${time %H:%M}$font
+${alignc}${color1}${time %A} ${time %d} ${time  %B} ${time %Y}$font
+${hr}
+${color1}CPU${alignr}${cpu cpu0}%${color0}
+${color2}${top name 1} $alignr ${top cpu 1}%
+${color0}${top name 2} $alignr ${top cpu 2}%
+${top name 3} $alignr ${top cpu 3}%
+
+${color1}RAM${alignr}${mem}${color0}
+${color2}${top_mem name 1} $alignr ${top_mem mem_res 1}
+${color0}${top_mem name 2} $alignr ${top_mem mem_res 2}
+${top_mem name 3} $alignr ${top_mem mem_res 3}
+
+${color1}NETWORK ${hr}${color0}
+Download: ${alignr}${downspeed wlp3s0}
+Upload: ${alignr}${upspeed wlp3s0}
+
+${color1}SYSTEM INFO ${hr}${color0}
+Uptime: ${alignr}${uptime_short}
+Processes: ${alignr}${processes}
+Pacman Updates: ${alignr}${execpi 600 checkupdates | wc -l}​
+]]

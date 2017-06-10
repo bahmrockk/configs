@@ -1,1 +1,0 @@
-./gitconfigs/vimrc

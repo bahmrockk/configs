@@ -1,0 +1,37 @@
+double_buffer yes
+xinerama_head 1
+alignment top_right
+gap_x 1
+gap_y 0
+own_window yes
+own_window_transparent yes
+own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
+use_xft yes
+xftalpha 0.1
+xftfont Droid Sans:size=15
+update_interval 1.0
+color0 white
+color1 2372b2
+
+TEXT
+${alignc}${font Open Sans Light:pixelsize=55}${time %H:%M}$font
+${alignc}${color1}${time %A} ${time %d} ${time  %B} ${time %Y}$font
+${hr}
+${color1}CPU${alignr}${cpu cpu0}%${color0}
+${top name 1} $alignr ${top cpu 1}%
+${top name 2} $alignr ${top cpu 2}%
+${top name 3} $alignr ${top cpu 3}%
+
+${color1}RAM${alignr}${mem}${color0}
+${top_mem name 1} $alignr ${top_mem mem_res 1}
+${top_mem name 2} $alignr ${top_mem mem_res 2}
+${top_mem name 3} $alignr ${top_mem mem_res 3}
+
+${color1}NETWORK ${hr}${color0}
+Download: ${alignr}${downspeed enp3s0}
+Upload: ${alignr}${upspeed enp3s0}
+
+${color1}SYSTEM INFO ${hr}${color0}
+Kernel: ${alignr}${kernel}
+Processes: ${alignr}${processes}
+Pacman Updates: ${alignr}${execpi 600 checkupdates | wc -l}​
