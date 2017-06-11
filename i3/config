@@ -87,6 +87,9 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# wrap the focus
+
+
 # workspace back and forth (with/without active container)
 workspace_auto_back_and_forth yes
 bindsym $mod+b workspace back_and_forth
@@ -133,11 +136,11 @@ bindsym $mod+Ctrl+Left workspace prev
 # something like: set $ws1 1:mail
 #                 set $ws2 2:
 
-set $ws1 "1: ~ 1)"
-set $ws2 2
-set $ws3 "3: Mail (3)" 
-set $ws4 4
-set $ws5 "5: Storage (5)"
+set $ws1 "1: ~ "
+set $ws2 "2: 2"
+set $ws3 "3: 3" 
+set $ws4 "4: M4ail"
+set $ws5 "5: St5rage"
 set $ws6 6
 set $ws7 7
 set $ws8 8
@@ -177,11 +180,15 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
-assign [class="Thunderbird"] $ws3 
+assign [class="Thunderbird"] $ws4 
 assign [class="ownCloud"] $ws5
 # assign [title="Keepassx2" instance="Auto-Type"] $ws1 
 # Open specific applications in floating mode
-for_window [title="PasswordDatabase.kdbx - KeePassX"] move container to workspace $ws5
+#for_window [title="PasswordDatabase.kdbx - KeePassX"] move container to workspace $ws5
+for_window [class="Keepassx2" window_type="normal"] move container to workspace $ws5
+
+
+
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [title="Auto-Type - KeePassX"] floating enable border normal 
 #for_window [class="Clipgrab"] floating enable
