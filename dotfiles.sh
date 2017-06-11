@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -e
-dotfiles=(zshenv)
+dotfiles=(zshenv Xdefaults)
 echo "You are about to remove the following configuration folders:"
 for i in ${dotfiles[@]}; do
     echo $i
