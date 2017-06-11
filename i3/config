@@ -180,8 +180,8 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 # assign [class="Pale moon"] $ws2
 # assign [class="Pcmanfm"] $ws3
 # assign [class="Skype"] $ws5
-assign [class="Thunderbird"] $ws4 
-assign [class="ownCloud"] $ws5
+for_window [class="Thunderbird"] move to workspace $ws4 
+for_window [class="ownCloud"] move to workspace $ws5
 # assign [title="Keepassx2" instance="Auto-Type"] $ws1 
 # Open specific applications in floating mode
 #for_window [title="PasswordDatabase.kdbx - KeePassX"] move container to workspace $ws5
@@ -283,7 +283,8 @@ exec --no-startup-id setxkbmap -model pc105 -layout us,de -option grp:shifts_tog
 bar {
 #status_command i3status
 	position top 
-
+        mode hide
+        modifier Mod1+Mod4
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 	tray_output primary
         tray_output eDP1
