@@ -204,8 +204,10 @@ for_window [title="sudo"] floating enable border normal
 for_window [class="(?i)System-config-printer.py"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 
-#Allow for gaps to properly work
-#for_window [class="^.*"] border pixel 0
+
+#hide title bars per default
+for_window [class="^.*"] border pixel 0
+
 # switch to workspace with urgent window automatically
 # for_window [urgent=latest] focus
 
@@ -263,7 +265,7 @@ mode "resize" {
 bindsym Ctrl+Mod1+l exec xscreensaver-command --lock
 
 # Autostart applications
-exec --no-startup-id thunderbird
+exec --no-sta--press rtup-id thunderbird
 exec --no-startup-id firefox
 exec --no-startup-id nitrogen --restore; sleep 1; compton -b
 exec --no-startup-id conky -d -c ~/.config/conky/main 
@@ -282,10 +284,10 @@ exec --no-startup-id setxkbmap -model pc105 -layout us,de -option grp:shifts_tog
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 #status_command i3status
-	position top 
+        position top 
         mode hide
-        modifier Mod1+Mod4
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
+        modifier Mod3
+        ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
 	tray_output primary
         tray_output eDP1
         tray_padding 3 
@@ -308,16 +310,15 @@ bar {
             urgent_workspace   #16A085 #FDF6E3 #E5201D
         }
 }
-
-#bar {
-#    tray_output none 
-#    workspace_buttons no
-#    colors {
-#        background #2b2c2b
-#    }
-#}
-# hide/unhide i3status bar
 bindsym $mod+m bar mode toggle
+
+#Alt+Win to Show the Thing
+bindcode Mod1+133 exec --no-startup-id i3-msg bar hidden_state show
+bindcode Mod1+133 --release exec --no-startup-id i3-msg bar hidden_state hide
+#bindcode is order sensitve - my finges are not.
+bindcode Mod4+64 exec --no-startup-id i3-msg bar hidden_state show
+bindcode Mod4+64 --release exec --no-startup-id i3-msg bar hidden_state hide
+
 
 # Theme colors
 # class                 border  backgr. text    indic.  child_border
