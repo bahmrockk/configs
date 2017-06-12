@@ -332,6 +332,10 @@ bindcode Mod4+64 exec --no-startup-id i3-msg bar hidden_state show
 bindcode Mod4+64 --release exec --no-startup-id i3-msg bar hidden_state hide
 
 
+#brightnes controls
+bindcode 232 exec --no-startup-id xbacklight -10
+bindcode 233 exec --no-startup-id xbacklight +10
+
 # Theme colors
 # class                 border  backgr. text    indic.  child_border
 client.focused          #808280 #808280 #80FFF9 #FDF6E3
