@@ -1,0 +1,12 @@
+compton
+gksu
+pcmanfm
+dunst
+xorg-xkill
+galculator
+nitrogen
+volumeicon
+conky
+conky-manager
+lsb-release
+polkit-gnome
