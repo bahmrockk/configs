@@ -35,7 +35,7 @@ bindsym $mod+Return exec urxvt
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id synapse 
+bindsym $mod+d exec --no-startup-id albert 
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
@@ -126,7 +126,6 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+minus move scratchpad
 
 exec --no-startup-id urxvt -name urxvt_scratchpad
-#for_window [instance="^urxvt_scratchpad$"] geometry { "x" : 450, "y":450, "width":540, "height":777}
 for_window [instance="^urxvt_scratchpad$"] move scratchpad
 
 bindsym $mod+Ctrl+Return [instance="^urxvt_scratchpad$"] scratchpad show 
@@ -190,7 +189,7 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 for_window [class="Thunderbird"] move to workspace $ws4 
 for_window [class="Thunderbird" instance="Msgcompose"] floating enable, resize set 1000 1000, move position center
 for_window [class="ownCloud"] move to workspace $ws5
-
+for_window [class="albert"] border pixel 0
 
 # assign [title="Keepassx2" instance="Auto-Type"] $ws1 
 #for_window [title="PasswordDatabase.kdbx - KeePassX"] move container to workspace $ws5
@@ -270,6 +269,7 @@ mode "resize" {
 bindsym Ctrl+Mod1+l exec xscreensaver-command --lock
 
 # Autostart applications
+exec --no-startup-id compton -b
 exec --no-startup-id thunderbird
 exec --no-startup-id firefox
 exec --no-startup-id nitrogen --restore
@@ -282,7 +282,7 @@ exec --no-startup-id conky -d -c ~/.config/conky/main
 exec --no-startup-id xscreensaver -nosplash 
 exec --no-startup-id redshift 
 exec --no-startup-id keepassx2 ~/ownCloud/PasswordDatabase.xdbx
-exec --no-startup-id synapse -s
+exec --no-startup-id albert 
 exec --no-startup-id unclutter -idle 3 -root
 exec --no-startup-id owncloud
 exec --no-startup-id setxkbmap -model pc105 -layout us,de -option grp:shifts_toggle
