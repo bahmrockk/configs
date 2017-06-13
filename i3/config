@@ -270,7 +270,7 @@ mode "resize" {
 bindsym Ctrl+Mod1+l exec xscreensaver-command --lock
 
 # Autostart applications
-exec --no-startup-id compton -b
+exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id thunderbird
 exec --no-startup-id firefox
 exec --no-startup-id nitrogen --restore
