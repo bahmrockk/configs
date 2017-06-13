@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -e
-configurations=(conky i3 zsh)
+configurations=(conky i3 zsh compton)
 echo "You are about to remove the following configuration folders:"
 for i in ${configurations[@]}; do
     echo $i
