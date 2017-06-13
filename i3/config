@@ -145,7 +145,7 @@ bindsym $mod+Ctrl+Left workspace prev
 #                 set $ws2 2:
 
 set $ws1 "1: ~ "
-set $ws2 "2: 2"
+set $ws2 "2: 2hat"
 set $ws3 "3: 3" 
 set $ws4 "4: M4ail"
 set $ws5 "5: St5rage"
@@ -190,7 +190,7 @@ bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
 for_window [class="Thunderbird"] move to workspace $ws4 
 for_window [class="Thunderbird" instance="Msgcompose"] floating enable, resize set 1000 1000, move position center
 for_window [class="ownCloud"] move to workspace $ws5
-
+for_window [class="Franz"] move to workspace $ws2
 
 # assign [title="Keepassx2" instance="Auto-Type"] $ws1 
 #for_window [title="PasswordDatabase.kdbx - KeePassX"] move container to workspace $ws5
@@ -395,3 +395,5 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+exec --no-startup-id ~/.config/i3/local_startup.sh
