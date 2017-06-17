@@ -191,6 +191,7 @@ for_window [class="Thunderbird" instance="Msgcompose"] floating enable, resize s
 for_window [class="ownCloud"] move to workspace $ws5
 for_window [class="Franz"] move to workspace $ws2
 for_window [class="albert"] border pixel 0
+for_window [class="Vlc" window_role="vlc-video"] floating enable, sticky enable, resize set 800 450, move position 1760 0 
 
 # assign [title="Keepassx2" instance="Auto-Type"] $ws1 
 #for_window [title="PasswordDatabase.kdbx - KeePassX"] move container to workspace $ws5
