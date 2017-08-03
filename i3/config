@@ -41,6 +41,7 @@ bindsym $mod+d exec --no-startup-id albert
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
+exec xrdb ~/.Xdefaults
 exec --no-startup-id volumeicon
 exec --no-startup-id nm-applet
 exec --no-startup-id pasystray
@@ -52,8 +53,8 @@ exec --no-startup-id feh --bg-max --randomize --no-fehbg ~/ownCloud/Wallpaper/*
 ################################################################################################
 
 # Screen brightness controls
-# bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
-# bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
+#bindsym XF86MonBrightnessUp exec "xbacklight -inc 10; notify-send 'brightness up'"
+#bindsym XF86MonBrightnessDown exec "xbacklight -dec 10; notify-send 'brightness down'"
 
 # Start Applications
 bindsym $mod+Ctrl+b exec urxvt -e 'bmenu'
@@ -125,8 +126,6 @@ bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
-
-exec --no-startup-id urxvt -name urxvt_scratchpad
 for_window [instance="^urxvt_scratchpad$"] move scratchpad
 
 bindsym $mod+Ctrl+Return [instance="^urxvt_scratchpad$"] scratchpad show 
@@ -400,4 +399,7 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
+
+exec urxvt -name urxvt_scratchpad
+exec --no-startup-ud ~/.config/i3/random_bg_after_ss.sh
 exec --no-startup-id ~/.config/i3/local_startup.sh
