@@ -7,8 +7,8 @@ SAVEHIST=1000
 setopt appendhistory extendedglob
 setopt HIST_IGNORE_DUPS
 
-if [[ -e $HOME/.config/zsh/dircolors ]] then
-    eval `dircolors ~/.config/zsh/dircolors`
+if [[ -e $ZSH/dircolors/ansi-light ]] then
+    eval `dircolors $ZSH/dircolors/ansi-light`
 fi
 
 unsetopt beep
@@ -147,6 +147,8 @@ zle -N down-line-or-beginning-search
 bindkey "^[[A" up-line-or-beginning-search # Up
 bindkey "^[[B" down-line-or-beginning-search # Down
 
+[[ -n "${key[Up]}" ]] && bindkey "${key[Up]}" up-line-or-beginning-search
+[[ -n "${key[Down]}" ]] && bindkey "${key[Down]}" down-line-or-beginning-search
 
 #bindkey "^[[A" history-beginning-search-backward
 #bindkey "^[[B" history-beginning-search-forward
