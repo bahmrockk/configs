@@ -2,7 +2,7 @@ conky.config = {
 alignment = 'middle_right',
 minimum_width = 250,
 default_color = 'white',
-font = 'Bitstream Vera Sans:size=12',
+font = 'Roboto-Light:size=10',
 use_xft = true,
 own_window = true,
 own_window_transparent = true,
@@ -13,11 +13,14 @@ color0 = 'white',
 color1 = '2372b2',
 color2 = 'ffbaba',
 gap_x = 26,
-gap_y = -15
+gap_y = -15,
+lua_load = '~/.config/conky/draw_bg.lua',
+lua_draw_hook_pre = 'conky_draw_bg'
+
 }
 
 conky.text = [[
-${alignc}${font Open Sans Light:pixelsize=55}${time %H:%M}$font
+${alignc}${font Roboto-Light:pixelsize=50}${time %H:%M}$font
 ${alignc}${color1}${time %A} ${time %d} ${time  %B} ${time %Y}$font
 ${hr}
 ${color1}CPU${alignr}${cpu cpu0}%${color0}
@@ -30,7 +33,8 @@ ${color2}${top_mem name 1} $alignr ${top_mem mem_res 1}
 ${color0}${top_mem name 2} $alignr ${top_mem mem_res 2}
 ${top_mem name 3} $alignr ${top_mem mem_res 3}
 
-${color1}NETWORK ${hr}${color0}
+${color1}NETWORK: ${wireless_essid wlp3s0}${hr}${color0}
+${wireless_link_qual_perc wlp3s0}% - ${wireless_bitrate wlp3s0}
 Download: ${alignr}${downspeed wlp3s0}
 Upload: ${alignr}${upspeed wlp3s0}
 
@@ -38,4 +42,14 @@ ${color1}SYSTEM INFO ${hr}${color0}
 Uptime: ${alignr}${uptime_short}
 Processes: ${alignr}${processes}
 Pacman Updates: ${alignr}${execpi 600 checkupdates | wc -l}​
+
+BATTERY ${color2}${stippled_hr 2}
+${color2}in: ${color}${exec cat /sys/class/power_supply/BAT0/status}${goto 150}$color${battery_time BAT0}
+
+${color2}mA: $color${exec awk '{print $0/1000}' /sys/class/power_supply/BAT0/energy_now} $color${exec awk 'FNR==NR{a = $0/100;next}{OFMT = "%.2f %%"; print "("a/10")",$0/a} ' /sys/class/power_supply/BAT0/energy_full /sys/class/power_supply/BAT0/energy_now}
+${color} ${if_match ${battery_percent BAT0} >= 1}${color ff6000}$endif${if_match ${battery_percent BAT0} >= 15}${color ffa800}$endif${if_match ${battery_percent BAT0} >= 30}${color fffc2a}$endif${if_match ${battery_percent BAT0} >= 50}${color 24ff00}$endif${battery_bar 10,250BAT0}
+${if_existing /sys/class/power_supply/BAT1/status}${color2}ex: ${if_match "${head /sys/class/power_supply/BAT1/status 1}" == "Charging"}${color green}${else}${color orange}$endif${if_match "${head /sys/class/power_supply/BAT1/status 1}" == "Full"}${color green}$endif${exec cat /sys/class/power_supply/BAT1/status} ${goto 150}${color}${battery_time BAT1}
+${color2} mA: $color${exec awk '{print $0/1000}' /sys/class/power_supply/BAT1/energy_now} $color${exec awk 'FNR==NR{a = $0/100;next}{OFMT = "%.2f %%"; print "("a/10")",$0/a} ' /sys/class/power_supply/BAT1/energy_full /sys/class/power_supply/BAT1/energy_now}
+${color} ${if_match ${battery_percent BAT1} >= 1}${color ff6000}$endif${if_match ${battery_percent BAT1} >= 15}${color ffa800}$endif${if_match ${battery_percent BAT1} >= 30}${color fffc2a}$endif${if_match ${battery_percent BAT1} >= 50}${color 24ff00}$endif${battery_bar 10,250 BAT1}${endif}
+
 ]]

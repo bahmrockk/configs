@@ -1,96 +1,111 @@
-!-------------------------------------------------------------------------------
-! Xft settings
-!-------------------------------------------------------------------------------
+!XTerm
+URxvt.inputMethod: ibus
+URxvt.preeditType: OverTheSpot
 
-Xft.dpi:                    96 
-Xft.antialias:              false
-Xft.rgba:                   rgb
-Xft.hinting:                true
-Xft.hintstyle:              hintslight
+*color0:    Black
+*color1:    OrangeRed3
+*color2:    Green4
+*color3:    Yellow3
+*color4:    RoyalBlue3
+*color5:    Magenta3
+*color6:    Cyan3
+*color7:    AntiqueWhite
+*color8:    Grey15
+*color9:    OrangeRed
+*color10:   Green
+*color11:   Yellow
+*color12:   CornflowerBlue
+*color13:   Magenta
+*color14:   turquoise
+*color15:   White
+! http://critical.ch/xterm
 
-!-------------------------------------------------------------------------------
-! URxvt settings
-! Colours lifted from Solarized (http://ethanschoonover.com/solarized)
-! More info at:
-! http://pod.tst.eu/http://cvs.schmorp.de/rxvt-unicode/doc/rxvt.1.pod
-!-------------------------------------------------------------------------------
 
-URxvt.depth:                32
-URxvt.geometry:             90x30
-!URxvt.transparent:          true 
-!URxvt.shading:              20
-URxvt.fading:               0
-! URxvt.urgentOnBell:         true
-! URxvt.visualBell:           true
-URxvt.loginShell:           true
-URxvt.saveLines:            50
-URxvt.internalBorder:       3
-URxvt.lineSpace:            0
+!URxvt
 
-! Fonts
-URxvt.allow_bold:           false
-/* URxvt.font:                 -*-terminus-medium-r-normal-*-12-120-72-72-c-60-iso8859-1 */
-URxvt*font: xft:Monospace:pixelsize=11
-URxvt*boldFont: xft:Monospace:pixelsize=11
+URxvt*background: rgba:0E00/0E00/0E00/ffff
+!URxvt*background: rgba:0E00/0E00/0E00/dddd
+URxvt*foreground: #DEDEDE
+URxvt*saveLines:  1000000
+URxvt.depth:      32
+URxvt.buffered:    true
+URxvt.transparent: true 
+URxvt.shading:     100
 
-! Fix font space
-URxvt*letterSpace: -1
+!Scroll
+URxvt.scrollBar: false
+URxvt.scrollBar_right: true
+URxvt.scrollBar_floating: true
+URxvt.scrollstyle: plain
 
-! Scrollbar
-URxvt.scrollStyle:          rxvt
-URxvt.scrollBar:            false
+URxvt*scrollTtyOutput   : false
+URxvt*scrollWithBuffer  : true
+URxvt*scrollTtyKeypress : true
 
-! Perl extensions
-URxvt.perl-ext-common:      default,matcher
-URxvt.matcher.button:       1
-URxvt.urlLauncher:          firefox
+URxvt*secondaryWheel  : true
+URxvt*secondaryScreen : true
 
-! Cursor
-URxvt.cursorBlink:          true
-URxvt.cursorColor:          #657b83
-URxvt.cursorUnderline:      false
+URxvt*buffered:false
+URxvt*transparent:true
+URxvt*fading:40
+URxvt*tintColor:#000000
+URxvt*shading:100
 
-! Pointer
-URxvt.pointerBlank:         true
+URxvt.inputMethod:fcitx
+!URxvt.imFont: -Monaco-medium-r-normal–0-0-0-0-p-0-iso10646-1
+urxvt*imLocale:en_US.utf8
 
-!!Source http://github.com/altercation/solarized
+URxvt*font: xft:Bitstream Vera Sans Mono:pixelsize=13:antialias=true:hinting=true
+URxvt*boldFont: xft:Bitstream Vera Sans Mono:bold:pixelsize=13:antialias=true:hinting=true
 
-*background: #002b36
-*foreground: #657b83
-!!*fading: 40
-*fadeColor: #002b36
-*cursorColor: #93a1a1
-*pointerColorBackground: #586e75
-*pointerColorForeground: #93a1a1
+urxvt*urgentOnBell:true
+urxvt*meta8:false
+urxvt*borderless:true
+urxvt*multichar_encoding:utf8
+urxvt*cursorBlink:false
+urxvt*cursorUnderline:false
+urxvt*metaSendsEscape: true
+urxvt*eightBitInput: false
 
-!! black dark/light
-*color0: #073642
-*color8: #002b36
+urxvt*keysym.sym: string
 
-!! red dark/light
-*color1: #dc322f
-*color9: #cb4b16
+URxvt*iso14755: False  
+URxvt*iso14755_52: False
 
-!! green dark/light
-*color2: #859900
-*color10: #586e75
+!URxvt.perl-lib: /home/jinzhu/.scripts/urxvt/
+URxvt.perl-lib: /home/geoblu/.config/scripts/urxvt/
+URxvt.perl-ext-common: default,url-select,vim-scrollback,clipboard,autocomplete-ALL-the-things,font-size
 
-!! yellow dark/light
-*color3: #b58900
-*color11: #657b83
+! URxvt.matcher.button:   1
+URxvt.colorUL: #4682B4
 
-!! blue dark/light
-*color4: #268bd2
-*color12: #839496
+URxvt.keysym.M-slash:  perl:aAtt:complete
 
-!! magenta dark/light
-*color5: #d33682
-*color13: #6c71c4
+! keyboard-select,
+! URxvt.keysym.M-v: perl:keyboard-select:activate
+! URxvt.keysym.M-s: perl:keyboard-select:search
 
-!! cyan dark/light
-*color6: #2aa198
-*color14: #93a1a1
+! URxvt.clipboard.autocopy: true
+! URxvt.keysym.M-c:   perl:clipboard:copy
+! URxvt.keysym.M-v:   perl:clipboard:paste
 
-!! white dark/light
-*color7: #eee8d5
-*color15: #fdf6e3
+URxvt.keysym.C-M-u: perl:url-select:select_next
+! URxvt.url-select.autocopy: true
+URxvt.url-select.launcher: chromium
+URxvt.url-select.underline: true
+
+urxvt.vim-scrollback: C-M-v
+! M-r * -> paste from buffer; M-r + -> paste from clipboard
+urxvt.vim-scrollback-paste: M-r
+urxvt.vim-scrollback-bg: 16
+urxvt.vim-scrollback-fg: 10
+
+! file name with line number
+urxvt.vim-scrollback.pattern.1: (.*)
+urxvt.vim-scrollback.launcher.1: /home/jinzhu/.scripts/open_or_search $1
+urxvt*urlLauncher: chromium
+
+! Change font size on the fly
+URxvt.keysym.C-S-Up:   perl:font-size:incglobal
+URxvt.keysym.C-S-Down: perl:font-size:decglobal
+
