@@ -13,9 +13,10 @@ color0 = 'white',
 color1 = '2372b2',
 color2 = 'ffbaba',
 gap_x = 26,
-gap_y = -15
+gap_y = -15,
+lua_load = '~/.config/conky/draw_bg.lua',
+lua_draw_hook_pre = 'conky_draw_bg'
 }
-
 conky.text = [[
 ${alignc}${font Roboto-Light:pixelsize=50}${time %H:%M}$font
 ${alignc}${color1}${time %A} ${time %d} ${time  %B} ${time %Y}$font

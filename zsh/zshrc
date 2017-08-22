@@ -5,6 +5,9 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt appendhistory extendedglob
+setopt hist_ignore_space
+setopt inc_append_history
+setopt share_history
 setopt HIST_IGNORE_DUPS
 
 if [[ -e $ZSH/dircolors/ansi-light ]] then

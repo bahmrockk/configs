@@ -29,7 +29,9 @@ font pango:DejaVu 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec urxvt 
+#bindsym $mod+Return exec urxvt 
+bindsym $mod+Return exec terminator 
+
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -125,9 +127,12 @@ bindsym $mod+a focus parent
 
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
-for_window [instance="^urxvt_scratchpad$"] move scratchpad
+#for_window [instance="^urxvt_scratchpad$"] move scratchpad
+for_window [window_role="^terminator_scratchpad$"] move scratchpad
 
-bindsym $mod+Ctrl+Return [instance="^urxvt_scratchpad$"] scratchpad show 
+
+
+bindsym $mod+Ctrl+Return [window_role="^terminator_scratchpad$"] scratchpad show 
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
@@ -399,6 +404,8 @@ mode "$mode_gaps_outer" {
 }
 
 
-exec urxvt -name urxvt_scratchpad
-exec --no-startup-ud ~/.config/i3/random_bg_after_ss.sh
-exec --no-startup-id ~/.config/i3/local_startup.sh
+exec terminator -r terminator_scratchpad
+exec --no-startup-id feh --bg-max --randomize --no-fehbg ~/ownCloud/Wallpaper/* 
+#exec urxvt -name urxvt_scratchpad
+exec ~/.config/i3/random_bg_after_ss.sh
+exec ~/.config/i3/local_startup.sh
