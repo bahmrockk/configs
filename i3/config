@@ -279,7 +279,7 @@ bindsym Ctrl+Mod1+l exec xscreensaver-command --lock
 exec --no-startup-id compton -b --config ~/.config/compton.conf
 exec --no-startup-id thunderbird
 exec --no-startup-id firefox
-exec --no-startup-id nitrogen --restore
+#exec --no-startup-id nitrogen --restore
 exec --no-startup-id conky -d -c ~/.config/conky/main 
 # exec --no-startup-id blueman
 #exec --no-startup-id clipit
