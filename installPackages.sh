@@ -4,5 +4,5 @@ git clone https://aur.archlinux.org/trizen.git
 cd trizen
 makepkg -si
 cd ..
-rm -r trizen
-trizen -S - < ./packageList.txt
+rm -rf ./trizen
+trizen -S --needed - < ./packageList.txt

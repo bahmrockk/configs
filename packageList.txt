@@ -1,3 +1,4 @@
+albert
 antigen-git
 autoconf
 automake
@@ -10,6 +11,7 @@ compton
 conky
 conky-manager
 coreutils
+cowfortune
 cryptsetup
 device-mapper
 dhcpcd
@@ -33,6 +35,7 @@ gettext
 git
 gksu
 glibc
+gnome-keyring
 grep
 grub
 gzip
@@ -43,6 +46,7 @@ intel-ucode
 iproute2
 iputils
 jfsutils
+keepassx2
 less
 libtool
 licenses
@@ -57,9 +61,13 @@ make
 man-db
 man-pages
 mdadm
+mlocate
 nano
 netctl
+network-manager-applet
+nextcloud-client-git
 nitrogen
+openssh
 pacman
 pacmatic
 patch
@@ -71,6 +79,7 @@ pkg-config
 polkit-gnome
 procps-ng
 psmisc
+redshift
 reiserfsprogs
 s-nail
 sed
@@ -82,10 +91,14 @@ tar
 terminator
 texinfo
 thunderbird
+trizen
+ttf-dejavu
+ttf-inconsolata
 usbutils
 util-linux
 vi
 vim
+vlc
 volumeicon
 w3m
 which
@@ -95,4 +108,8 @@ xorg-server
 xorg-server-devel
 xorg-setxkbmap
 xorg-xkill
+xorg-xlsfonts
+xorg-xprop
+xscreensaver-arch-logo
+yaourt
 zsh
