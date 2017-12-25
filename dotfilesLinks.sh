@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -e
-dotfiles=(zshenv Xdefaults vim vimrc)
+dotfiles=(zshenv Xdefaults vim vimrc xscreensaver)
 echo "You are about to remove the following configuration folders:"
 for i in ${dotfiles[@]}; do
     echo $i

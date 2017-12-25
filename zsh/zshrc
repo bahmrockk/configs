@@ -26,7 +26,7 @@ setopt completealiases
 zstyle 'Lcompletion:*' menu select
 setopt HIST_IGNORE_DUPS
 
-source /usr/share/zsh/scripts/antigen/antigen.zsh
+source /usr/share/zsh/share/antigen.zsh
 
 
 antigen bundles <<EOBUNDLES
