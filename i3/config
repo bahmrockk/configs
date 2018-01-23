@@ -2,7 +2,7 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 # Set mod key (Mod1=<Alt>, Mod4=<Super>)
-set $mod Mod1
+set $mod Mod4
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
 new_window pixel 1
@@ -286,7 +286,8 @@ exec --no-startup-id conky -d -c ~/.config/conky/main
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec_always --no-startup-id sbxkb
 exec --no-startup-id xscreensaver -nosplash 
-exec --no-startup-id redshift 
+#started via local script
+#exec --no-startup-id redshift 
 exec --no-startup-id keepassx2 ~/Nextcloud/PasswordDatabase.xdbx
 exec --no-startup-id albert 
 exec --no-startup-id unclutter -idle 3 -root
@@ -324,11 +325,11 @@ bar {
 bindsym $mod+m bar mode toggle
 
 #Alt+Win to Show the Thing
-bindcode Mod1+133 exec --no-startup-id i3-msg bar hidden_state show
-bindcode Mod1+133 --release exec --no-startup-id i3-msg bar hidden_state hide
+#bindcode Mod1+133 exec --no-startup-id i3-msg bar hidden_state show
+#bindcode Mod1+133 --release exec --no-startup-id i3-msg bar hidden_state hide
 #bindcode is order sensitve - my finges are not.
-bindcode Mod4+64 exec --no-startup-id i3-msg bar hidden_state show
-bindcode Mod4+64 --release exec --no-startup-id i3-msg bar hidden_state hide
+#bindcode Mod4+64 exec --no-startup-id i3-msg bar hidden_state show
+#bindcode Mod4+64 --release exec --no-startup-id i3-msg bar hidden_state hide
 
 
 #brightnes controls
