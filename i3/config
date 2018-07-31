@@ -129,11 +129,11 @@ bindsym $mod+a focus parent
 bindsym $mod+Shift+minus move scratchpad
 #for_window [instance="^urxvt_scratchpad$"] move scratchpad
 for_window [window_role="^terminator_scratchpad$"] move scratchpad
-for_window [class="Zim"] move scratchpad
+for_window [title="Notes - Zim"] move scratchpad
 
 
 bindsym $mod+Ctrl+Return [window_role="^terminator_scratchpad$"] scratchpad show 
-bindsym $mod+Shift+Return [class="Zim"] scratchpad show
+bindsym $mod+Shift+Return [title="Notes - Zim"] scratchpad show
 
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
