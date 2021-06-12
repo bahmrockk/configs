@@ -68,7 +68,7 @@ refresh-rate = 0;		# For --sw-opti: Specify refresh rate of the screen. 0 for au
 #vsync = "opengl-swc";		# "none", "drm", "opengl", "opengl-oml", "opengl-swc", "opengl-mswc" 
 vsync = "opengl";				# See man page for more details.
 dbe = false;			# Enable DBE painting mode. Rarely needed.
-paint-on-overlay = true;	# Painting on X Composite overlay window. Recommended.
+# paint-on-overlay = true;	# Painting on X Composite overlay window. Recommended.
 
 sw-opti = false;		# Limit compton to repaint at most once every 1 / refresh_rate.
 				# Incompatible with certain VSync methods.

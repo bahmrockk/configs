@@ -5,8 +5,8 @@
 set $mod Mod4
 
 # Configure border style <normal|1pixel|pixel xx|none|pixel>
-new_window pixel 1
-new_float normal
+new_window pixel 1 
+new_float normal 
 
 # Hide borders
 hide_edge_borders none
@@ -14,7 +14,7 @@ hide_edge_borders none
 # change borders
 bindsym $mod+u border none
 bindsym $mod+y border pixel 1
-bindsym $mod+n border normal
+#bindsym $mod+n border normal
 
 #add border to active window
 #for_window [class="^.*"] border pixel 0
@@ -30,23 +30,25 @@ floating_modifier $mod
 
 # start a terminal
 #bindsym $mod+Return exec urxvt 
-bindsym $mod+Return exec terminator 
 
+#bindsym $mod+Return exec terminator 
+bindsym $mod+Return exec konsole
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # start program launcher
-bindsym $mod+d exec --no-startup-id albert 
+# bindsym $mod+d exec --no-startup-id albert 
 
 ################################################################################################
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
 exec xrdb ~/.Xdefaults
-exec --no-startup-id volumeicon
-exec --no-startup-id dbus-launch nm-applet
-exec --no-startup-id pasystray
+
+#exec --no-startup-id volumeicon
+#exec --no-startup-id dbus-launch nm-applet
+#exec --no-startup-id pasystray
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
 #bindsym $mod+Ctrl+m exec pavucontrol
@@ -61,18 +63,18 @@ exec --no-startup-id pasystray
 bindsym $mod+Ctrl+b exec urxvt -e 'bmenu'
 bindsym $mod+F2 exec firefox 
 # bindsym $mod+F3 exec ranger
-bindsym $mod+t exec --no-startup-id pkill compton
-bindsym $mod+Ctrl+t exec --no-startup-id compton -b
-bindsym $mod+Shift+d --release exec "killall dunst; exec notify-send 'restart dunst'"
+#bindsym $mod+t exec --no-startup-id pkill compton
+#bindsym $mod+Ctrl+t exec --no-startup-id compton -b
+bindsym $mod+Shift+a --release exec "killall dunst; exec notify-send 'restart dunst'"
 bindsym $mod+Ctrl+x --release exec --no-startup-id xkill
 
 # focus_follows_mouse no
 
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+n focus left
+bindsym $mod+r focus down
+bindsym $mod+g focus up
+bindsym $mod+t focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -81,10 +83,10 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+n move left
+bindsym $mod+Shift+r move down
+bindsym $mod+Shift+g move up
+bindsym $mod+Shift+t move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -128,8 +130,10 @@ bindsym $mod+a focus parent
 # move the currently focused window to the scratchpad
 bindsym $mod+Shift+minus move scratchpad
 #for_window [instance="^urxvt_scratchpad$"] move scratchpad
-for_window [window_role="^terminator_scratchpad$"] move scratchpad
-for_window [title="Notes - Zim"] move scratchpad
+#for_window [window_role="^terminator_scratchpad$"] move scratchpad
+#for_window [title="Notes - Zim"] move scratchpad
+for_window [class="yakauke"] move scratchpad
+
 
 
 bindsym $mod+Ctrl+Return [window_role="^terminator_scratchpad$"] scratchpad show 
@@ -157,12 +161,12 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 
-workspace 2 output eDP1
-workspace 6 output HDMI2
+#workspace 2 output eDP1
+#workspace 6 output HDMI2
+
 exec --no-startup-id feh --bg-max --randomize --no-fehbg ~/Nextcloud/Wallpaper/*
 set $new_bg "feh --bg-max --randomize --no-fehbg ~/Nextcloud/Wallpaper/*"                                                           
 
-bindsym $mod+F4 exec --no-startup-id $feh
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1 ; exec --no-startup-id $new_bg
@@ -208,6 +212,9 @@ for_window [class="Vlc" window_role="vlc-video"] floating enable, sticky enable,
 # assign [title="Keepassx2" instance="Auto-Type"] $ws1 
 #for_window [title="PasswordDatabase.kdbx - KeePassX"] move container to workspace $ws5
 for_window [class="Keepassx2" window_type="normal"] move container to workspace $ws5
+for_window [class="KeepassXC" window_type="normal"] move container to workspace $ws5
+
+
 
 for_window [title="alsamixer"] floating enable border pixel 1
 for_window [title="Auto-Type - KeePassX"] floating enable border normal 
@@ -231,29 +238,31 @@ for_window [class="Timeset-gui"] floating enable border normal
 bindsym $mod+Shift+c reload
 
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
+
 
 # exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+bindsym $mod+Shift+e exec --no-startup-id qdbus org.kde.ksmserver /KSMServer org.kde.KSMServerInterface.logout -1 -1 -1
+
+#bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
 # Set shut down, restart and locking features
-bindsym $mod+0 mode "$mode_system"
-set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
-mode "$mode_system" {
-    bindsym e exec --no-startup-id i3-msg exit 
-    bindsym s exec --no-startup-id systemctl suspend 
-    bindsym l exec --no-startup-id xscreensaver-command --lock 
-    bindsym h exec --no-startup-id systemctl hibernate
-    bindsym r exec --no-startup-id systemctl reboot 
-    bindsym Shift+s exec --no-startup-id systemctl poweroff 
-
-    # exit system mode: "Enter" or "Escape"
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+#bindsym $mod+0 mode "$mode_system"
+#set $mode_system (l)ock, (e)xit, (s)uspend, (h)ibernate, (r)eboot, (Shift+s)hutdown
+#mode "$mode_system" {
+#    bindsym e exec --no-startup-id i3-msg exit 
+#    bindsym s exec --no-startup-id systemctl suspend 
+#    bindsym l exec --no-startup-id xscreensaver-command --lock 
+#    bindsym h exec --no-startup-id systemctl hibernate
+#    bindsym r exec --no-startup-id systemctl reboot 
+#    bindsym Shift+s exec --no-startup-id systemctl poweroff 
+#
+#    # exit system mode: "Enter" or "Escape"
+#    bindsym Return mode "default"
+#    bindsym Escape mode "default"
+#}
 
 # Resize window (you can also use the mouse for that)
-bindsym $mod+r mode "resize"
+bindsym $mod+c mode "resize"
 mode "resize" {
         # These bindings trigger as soon as you enter the resize mode
         # Pressing left will shrink the window’s width.
@@ -280,8 +289,12 @@ mode "resize" {
 #bindsym $mod+9 exec --no-startup-id blurlock
 bindsym Ctrl+Mod1+l exec xscreensaver-command --lock
 
+
+
 # Autostart applications
+
 exec --no-startup-id compton -b --config ~/.config/compton.conf
+
 exec --no-startup-id thunderbird
 exec --no-startup-id i3-msg 'workspace 1; exec firefox'
 #exec --no-startup-id nitrogen --restore
@@ -291,14 +304,14 @@ exec --no-startup-id conky -d -c ~/.config/conky/main
 #exec --no-startup-id desktop-items
 #exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id xscreensaver -nosplash 
+#exec --no-startup-id xscreensaver -nosplash 
 #started via local script
 #exec --no-startup-id redshift 
-exec --no-startup-id keepassx2 ~/Nextcloud/PasswordDatabase.xdbx
-exec --no-startup-id albert 
+#exec --no-startup-id keepassx2 ~/Nextcloud/PasswordDatabase.xdbx
+#exec --no-startup-id albert 
 exec --no-startup-id unclutter -idle 3 -root
-exec --no-startup-id nextcloud
-exec --no-startup-id setxkbmap -model pc105 -layout us,de -option grp:shifts_toggle
+#exec --no-startup-id nextcloud
+#exec --no-startup-id setxkbmap -model pc105 -layout us,de -option grp:shifts_toggle
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	status_command i3status
@@ -376,7 +389,7 @@ smart_borders on
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
+#bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"
@@ -410,8 +423,8 @@ mode "$mode_gaps_outer" {
 }
 
 
-exec terminator -r terminator_scratchpad
-exec Zim
+#exec terminator -r terminator_scratchpad
+#exec Zim
 exec --no-startup-id $new_bg
 
 bindsym $mod+F3 $new_bg 
@@ -419,3 +432,29 @@ bindsym $mod+F3 $new_bg
 #exec urxvt -name urxvt_scratchpad
 exec ~/.config/i3/random_bg_after_ss.sh
 exec ~/.config/i3/local_startup.sh
+
+
+
+
+#Plasma Compatibility - thanks @https://github.com/heckelson/i3-and-kde-plasm
+#
+#
+
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+
+for_window [class="yakuake"] floating enable
+for_window [class="systemsettings"] floating enable
+for_window [class="plasmashell"] floating enable;
+for_window [class="Plasma"] floating enable; border none
+for_window [title="plasma-desktop"] floating enable; border none
+for_window [title="win7"] floating enable; border none
+for_window [class="krunner"] floating enable; border none
+for_window [class="Kmix"] floating enable; border none
+for_window [class="Klipper"] floating enable; border none for_window [class="Plasmoidviewer"] floating enable; border none
+for_window [class="plasmashell" window_type="notification"] border none, move right 700px, move down 450px
+no_focus [class="plasmashell" window_type="notification"]
+
+for_window [title="Desktop — Plasma"] kill; floating enable; border none
+
+
