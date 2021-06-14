@@ -131,10 +131,5 @@ default_border pixel 1
 default_floating_border normal
 hide_edge_borders smart
 
-
-
-#Screensharing shenaningans
-exec systemctl --user import-environment
-
 include /etc/sway/config.d/*
 include ~/.config/sway/config.d/*
