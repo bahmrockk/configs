@@ -1,6 +1,6 @@
 #!/bin/bash
 #set -e
-configurations=(conky i3 zsh compton.conf terminator sway dunst)
+configurations=(conky i3 zsh compton.conf terminator sway dunst waybar alacritty)
 echo "You are about to remove the following configuration folders:"
 for i in ${configurations[@]}; do
     echo $i

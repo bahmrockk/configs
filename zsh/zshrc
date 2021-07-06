@@ -1,5 +1,19 @@
+
 HOME=`eval echo ~`
 ZSH=$HOME"/.config/zsh"
+
+# Use powerline
+USE_POWERLINE="true"
+# Source manjaro-zsh-configuration
+if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+  source /usr/share/zsh/manjaro-zsh-config
+fi
+# Use manjaro zsh prompt
+if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+  source /usr/share/zsh/manjaro-zsh-prompt
+fi
+
+
 # Lines configured by zsh-newuser-install
 HISTFILE=~/.histfile
 HISTSIZE=1000
@@ -25,18 +39,6 @@ compinit
 setopt completealiases
 zstyle 'Lcompletion:*' menu select
 setopt HIST_IGNORE_DUPS
-
-source /usr/share/zsh/share/antigen.zsh
-
-
-antigen bundles <<EOBUNDLES
-colored-man-pages #guess
-zsh-users/zsh-syntax-highlighting #highlight for the console while typing
-zsh-users/zsh-completions src
-#zsh-users/zaw #command prompt/completion
-
-EOBUNDLES
-antigen apply
 
 # include all lib config files
 local zshpath
@@ -156,3 +158,9 @@ bindkey "^[[B" down-line-or-beginning-search # Down
 #bindkey "^[[A" history-beginning-search-backward
 #bindkey "^[[B" history-beginning-search-forward
 
+
+
+if [ -n "$DESKTOP_SESSION" ];then
+    eval $(gnome-keyring-daemon --start)
+    export SSH_AUTH_SOCK
+fi

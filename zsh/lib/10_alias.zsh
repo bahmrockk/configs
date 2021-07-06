@@ -5,9 +5,6 @@ alias ll="ls --group-directories-first --color -l -a"
 
 alias cd..="cd .."
 
-#Never use pacman
-alias pacman="echo 'You want to use pacmatic'"
-
 #bc should alway run -l
 alias bc="bc -l"
 
