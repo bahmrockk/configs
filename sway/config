@@ -18,8 +18,10 @@ set $right t
 #
 ### Menu settings --> bound in the bindings config.d
 #
-exec krunner --daemon
+#exec "krunner --daemon"
 set $menu krunner
+
+exec dunst 
 
 #
 ### Your preferred terminal emulator
