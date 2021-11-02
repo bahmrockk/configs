@@ -1,7 +1,7 @@
 #!/bin/bash
 #set -e
-configurations=(conky i3 zsh compton.conf terminator sway dunst waybar alacritty)
-echo "You are about to remove the following configuration folders:"
+configurations=(conky i3 zsh compton.conf terminator sway dunst waybar alacritty )
+echo "You are about to remove the following configuration folders, plus the nvim config files:"
 for i in ${configurations[@]}; do
     echo $i
 done
@@ -16,3 +16,5 @@ case $yn in
     *) echo "no";;
 esac
 #ln -sf ./conky ~/config/conky
+
+ln -sf $(pwd)/nvim/* ~/.config/nvim/
